@@ -11,6 +11,10 @@ import {
   PenTool,
   Code2,
   Rocket,
+  CalendarDays,
+  ArrowUpRight,
+  CheckCircle2,
+  Check,
 } from "lucide-react";
 
 const services = [
@@ -130,6 +134,9 @@ export default function Home() {
             </a>
             <a href="#process" className="transition hover:text-white">
               Process
+            </a>
+            <a href="#booking" className="transition hover:text-white">
+              Booking
             </a>
             <a href="#contact" className="transition hover:text-white">
               Contact
@@ -511,6 +518,94 @@ export default function Home() {
                 </GlowCard>
               ))}
             </div>
+          </div>
+        </section>
+      </FadeIn>
+
+      {/* BOOKING */}
+      <FadeIn>
+        <section
+        id="booking"
+        className="relative overflow-hidden border-t border-white/10 px-6 py-32"
+        >
+          <div className="absolute left-1/2 top-0 h-[520px] w-[760px] -translate-x-1/2 rounded-full bg-white/[0.035] blure-[150px]" />
+
+          <div className="realtive z-10 mx-auto grid max-w-7xl gap-10 lg:grid-cols-1[1.1fr_0.9fr] lg:items-center ">
+            <div>
+              <p className="mb-4 text-sm uppercase tracking-[0.3em] text-neutral-500">
+                Book a Call
+              </p>
+
+              <h2 className="max-w-3xl text-4xl font-semibold tracking-tight sm:text-5xl">
+                Let&apos;s map out your premium web presence.
+              </h2>
+
+              <p className="mt-6 max-w-2xl text-lg leading-8 text-neutral-400">
+                Book a short strategy call and we&apos;ll discuss your brand, goals, offer, timeline and the best dierction for your website.
+              </p>
+
+              <div className="mt-10 grid gap-4 sm:grid-cols-3">
+                {[
+                  "Clear project direction",
+                  "Premium visual strategy",
+                  "Next steps explained",
+                ].map((item) => (
+                  <div 
+                  key={item}
+                  className="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/[0.03] px-4 py-4 text-sm text-neutral-300"
+                  >
+                    <CheckCircle2 className="h-4 w-4 text-white" />
+                    <span>{item}</span>
+                    </div>
+                ))}
+              </div>
+            </div>
+
+            <GlowCard innerClassName="p-8 md:p-10">
+              <div className="mb-8 flex h-14 w-14 items-center justify-center rounded-2xl border-white/10 bg-white/[0.04]">
+              <CalendarDays className="h-6 w-6 text-white" strokeWidth={1.6} />
+              </div>
+
+              <h3 className="text-3xl font-semibold tracking-tight">
+                Free Website Strategy Call
+              </h3>
+
+              <p className="mt-4 leading-7 text-neutral-400">
+                A focused 30-minute call to understand your project and see if
+                Valdr Studio is the right fit.
+              </p>
+
+              <div className="mt-8 space-y-4 border-t border-white/10 pt-8 text-sm text-neutral-400">
+              <div className="flex items-center justify-between">
+                <span>Duration</span>
+                <span className="text-white">30 minutes</span>
+              </div>
+
+              <div className=" flex items-center justify-between">
+                <span>Format</span>
+                <span className="text-white">Online Call</span>
+              </div>
+
+              <div className="flex items-center justify-between">
+                <span>Price</span>
+                <span className="text-white">Free</span>
+              </div>
+              </div>
+
+              <a 
+              href="https://calendly.com/radivojevicdavor79/30min"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-10 inline-flex w-full items-center justify-center gap-3 rounded-full bg-white px-8 py-4 font-medium text-black transition hover-scare-[1.02]"
+              >
+                Book Strategy Call
+                <ArrowUpRight className="h-4 w-4" />
+              </a>
+
+              <p className="mt-5 text-center text-xs text-neutral-500">
+                No pressure. Just clarity on waht your website needs.
+              </p>
+            </GlowCard>
           </div>
         </section>
       </FadeIn>
