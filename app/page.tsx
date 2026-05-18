@@ -2,12 +2,21 @@ import Image from "next/image";
 import type { ReactNode } from "react";
 import FadeIn from "@/components/FadeIn";
 import TawkChat from "@/components/TawkChat";
-import { Sparkles, Globe, MonitorSmartphone, RefreshCcw} from "lucide-react";
+import {
+  Sparkles,
+  Globe,
+  MonitorSmartphone,
+  RefreshCcw,
+  Search,
+  PenTool,
+  Code2,
+  Rocket,
+} from "lucide-react";
 
 const services = [
   {
     title: "Landing Pages",
-    text: "High-impact pages built to sell, book or capture leades.",
+    text: "High-impact pages built to sell, book or capture leads.",
     icon: Sparkles,
   },
   {
@@ -17,7 +26,7 @@ const services = [
   },
   {
     title: "Web Apps",
-    text: "Clean digital tolls with real functionality adn sharp UI.",
+    text: "Clean digital tools with real functionality and sharp UI.",
     icon: MonitorSmartphone,
   },
   {
@@ -29,24 +38,24 @@ const services = [
 
 const processSteps = [
   {
-    number: "01",
     title: "Discovery",
     text: "We define the goal, audience and direction of the project.",
+    icon: Search,
   },
   {
-    number: "02",
     title: "Strategy",
     text: "Structure, positioning and premium visual direction.",
+    icon: PenTool,
   },
   {
-    number: "03",
     title: "Build",
     text: "Fast, responsive development focused on quality.",
+    icon: Code2,
   },
   {
-    number: "04",
     title: "Launch",
     text: "Final polish, optimization and going live.",
+    icon: Rocket,
   },
 ];
 
@@ -84,7 +93,7 @@ function GlowCard({
     <div
       className={`group relative rounded-[28px] p-[1px] transition duration-500 hover:-translate-y-2 ${className}`}
     >
-      <div className="absolute -inset-[2px] rounded-[36px] bg-white blur-[2px] opacity-55 transition duration-500 group-hover:opacity-70" />
+      <div className="absolute -inset-[2px] rounded-[36px] bg-white opacity-55 blur-[2px] transition duration-500 group-hover:opacity-70" />
 
       <div
         className={`relative h-full overflow-hidden rounded-[28px] border border-white/10 bg-[#0A0A0A] hover:border-white/20 ${innerClassName}`}
@@ -143,8 +152,8 @@ export default function Home() {
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_30%,rgba(255,255,255,0.08),transparent_28%),radial-gradient(circle_at_80%_70%,rgba(255,255,255,0.06),transparent_30%)]" />
         <div className="pointer-events-none absolute -left-40 top-1/3 h-72 w-[700px] rotate-[-8deg] rounded-full bg-white/8 blur-[90px]" />
         <div className="pointer-events-none absolute -right-40 bottom-1/4 h-72 w-[700px] rotate-[8deg] rounded-full bg-white/6 blur-[100px]" />
-        <div className="pointer-events-none absolute inset-0 opacity-[0.08] bg-[linear-gradient(to_bottom,rgba(255,255,255,0.7)_1px,transparent_1px)] bg-[length:100%_6px]" />
-        <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-[45vh] opacity-25 bg-[linear-gradient(to_right,rgba(255,255,255,0.18)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.14)_1px,transparent_1px)] bg-[size:72px_72px] [mask-image:linear-gradient(to_top,black,transparent)]" />
+        <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_bottom,rgba(255,255,255,0.7)_1px,transparent_1px)] bg-[length:100%_6px] opacity-[0.08]" />
+        <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-[45vh] bg-[linear-gradient(to_right,rgba(255,255,255,0.18)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.14)_1px,transparent_1px)] bg-[size:72px_72px] opacity-25 [mask-image:linear-gradient(to_top,black,transparent)]" />
 
         <div className="relative z-10 mx-auto max-w-6xl text-center">
           <p className="mb-6 text-sm uppercase tracking-[0.3em] text-neutral-400">
@@ -224,24 +233,24 @@ export default function Home() {
 
             <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
               {services.map((service) => {
-  const Icon = service.icon;
+                const Icon = service.icon;
 
-  return (
-            <GlowCard key={service.title} innerClassName="p-8">
-                <div className="mb-6 flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/[0.03]">
-                  <Icon className="h-5 w-5 text-neutral-300" />
-               </div>
+                return (
+                  <GlowCard key={service.title} innerClassName="p-8">
+                    <div className="mb-6 flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/[0.03]">
+                      <Icon className="h-5 w-5 text-neutral-300" />
+                    </div>
 
                     <h3 className="text-xl font-semibold">
-                     {service.title}
+                      {service.title}
                     </h3>
 
                     <p className="mt-4 text-sm leading-6 text-neutral-400">
-                       {service.text}
+                      {service.text}
                     </p>
-                    </GlowCard>
-                    );
-                  })}
+                  </GlowCard>
+                );
+              })}
             </div>
           </div>
         </section>
@@ -372,19 +381,23 @@ export default function Home() {
             </div>
 
             <div className="grid gap-8 lg:grid-cols-4">
-              {processSteps.map((step) => (
-                <GlowCard key={step.number} innerClassName="p-8">
-                  <p className="mb-8 text-sm text-neutral-500">
-                    {step.number}
-                  </p>
+              {processSteps.map((step) => {
+                const Icon = step.icon;
 
-                  <h3 className="text-2xl font-semibold">{step.title}</h3>
+                return (
+                  <GlowCard key={step.title} innerClassName="p-8">
+                    <div className="mb-8 flex h-12 w-12 items-center justify-center rounded-2xl border border-white/10 bg-white/[0.04] transition duration-300 group-hover:border-white/30 group-hover:bg-white group-hover:text-black">
+                      <Icon className="h-5 w-5" strokeWidth={1.6} />
+                    </div>
 
-                  <p className="mt-4 leading-7 text-neutral-400">
-                    {step.text}
-                  </p>
-                </GlowCard>
-              ))}
+                    <h3 className="text-2xl font-semibold">{step.title}</h3>
+
+                    <p className="mt-4 leading-7 text-neutral-400">
+                      {step.text}
+                    </p>
+                  </GlowCard>
+                );
+              })}
             </div>
           </div>
         </section>
@@ -395,7 +408,6 @@ export default function Home() {
         <section className="relative border-t border-white/10 py-32">
           <div className="mx-auto max-w-7xl px-6 lg:px-8">
             <div className="grid gap-16 lg:grid-cols-2 lg:items-center">
-              {/* Left Side */}
               <div>
                 <p className="mb-4 text-sm uppercase tracking-[0.25em] text-white/40">
                   About Valdr Studio
@@ -419,7 +431,6 @@ export default function Home() {
                 </p>
               </div>
 
-              {/* Right Side */}
               <div className="relative overflow-hidden rounded-[32px] border border-white/10 bg-white/[0.03] p-10 backdrop-blur-sm">
                 <div className="absolute inset-0 bg-gradient-to-br from-white/[0.03] to-transparent" />
 
@@ -518,12 +529,10 @@ export default function Home() {
             </p>
 
             <h2 className="font-semibold tracking-tight">
-              {/* TELEFON */}
               <span className="mx-auto block max-w-[320px] text-[38px] leading-[1.02] sm:hidden">
                 Let&apos;s build something exceptional.
               </span>
 
-              {/* ZA DESKTOP */}
               <span className="hidden text-4xl leading-[0.98] sm:block sm:text-6xl">
                 Let&apos;s build something exceptional.
                 <br />
@@ -554,18 +563,12 @@ export default function Home() {
               </a>
             </div>
 
-            <div className="mt-16 flex items-center justify-center gap-8 text-sm text-neutral-500">
-              <a href="#" className="transition hover:text-white">
-                Instagram
-              </a>
-
-              <span className="text-neutral-700">•</span>
-
+            <div className="mt-16 flex items-center justify-center text-sm text-neutral-500">
               <a
                 href="mailto:valdrstudio@gmail.com"
                 className="transition hover:text-white"
               >
-                Email
+                valdrstudio@gmail.com
               </a>
             </div>
           </div>
