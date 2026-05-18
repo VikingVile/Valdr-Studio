@@ -2,6 +2,7 @@ import Image from "next/image";
 import type { ReactNode } from "react";
 import FadeIn from "@/components/FadeIn";
 import TawkChat from "@/components/TawkChat";
+
 import {
   Sparkles,
   Globe,
@@ -15,6 +16,8 @@ import {
   ArrowUpRight,
   CheckCircle2,
   Check,
+  CreditCard,
+  ShieldCheck,
 } from "lucide-react";
 
 const services = [
@@ -604,6 +607,129 @@ export default function Home() {
 
               <p className="mt-5 text-center text-xs text-neutral-500">
                 No pressure. Just clarity on waht your website needs.
+              </p>
+            </GlowCard>
+          </div>
+        </section>
+      </FadeIn>
+
+      {/*Pament*/}
+      <FadeIn>
+        <section
+          id="payment"
+          className="relative overflow-hidden border-t border-white/10 px-6 py-32"
+        >
+          <div className="absolute right-[-180px] top-10 h-[420px] w-[420px] rounded-full bg-white/[0.035] blur-[130px]" />
+          <div className="absolute bottom-0 left-[-180px] h-[420px] w-[420px] rounded-full bg-white/[0.025] blur-[130px]" />
+
+          <div className="relative z-10 mx-auto grid max-w-7xl gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
+            <div>
+              <p className="mb-4 text-sm uppercase tracking-[0.3em] text-neutral-500">
+                Client Payments
+              </p>
+
+              <h2 className="max-w-3xl text-4xl font-semibold tracking-tight sm:text-5xl">
+                Secure payments after the project is approved.
+              </h2>
+
+              <p className="mt-6 max-w-2xl text-lg leading-8 text-neutral-400">
+                Payments are never required before we understand your project.
+                First, we discuss your goals, scope and timeline. After the
+                proposal is approved, you receive a secure payment link to
+                reserve your project slot.
+              </p>
+
+              <div className="mt-10 grid gap-4 sm:grid-cols-2">
+                {[
+                  {
+                    icon: ShieldCheck,
+                    title: "Approval first",
+                    text: "You only pay after the project direction and scope are clear.",
+                  },
+                  {
+                    icon: CreditCard,
+                    title: "Secure checkout",
+                    text: "Approved payments are handled safely through Stripe Checkout.",
+                  },
+                ].map((item) => {
+                  const Icon = item.icon;
+
+                  return (
+                    <div
+                      key={item.title}
+                      className="rounded-[24px] border border-white/10 bg-white/[0.03] p-6"
+                    >
+                      <div className="mb-5 flex h-11 w-11 items-center justify-center rounded-2xl border border-white/10 bg-white/[0.04]">
+                        <Icon className="h-5 w-5 text-white" strokeWidth={1.6} />
+                      </div>
+
+                      <h3 className="font-semibold text-white">{item.title}</h3>
+
+                      <p className="mt-3 text-sm leading-6 text-neutral-400">
+                        {item.text}
+                      </p>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+
+            <GlowCard innerClassName="p-8 md:p-10">
+              <div className="mb-8 flex items-center justify-between gap-6">
+                <div>
+                  <p className="text-sm uppercase tracking-[0.25em] text-neutral-500">
+                    Payment Flow
+                  </p>
+
+                  <h3 className="mt-3 text-3xl font-semibold tracking-tight">
+                    Proposal first.
+                    <br />
+                    Payment after.
+                  </h3>
+                </div>
+
+                <div className="flex h-14 w-14 items-center justify-center rounded-2xl border border-white/10 bg-white/[0.04]">
+                  <CreditCard className="h-6 w-6 text-white" strokeWidth={1.6} />
+                </div>
+              </div>
+
+              <p className="leading-7 text-neutral-400">
+                Every project starts with a short strategy call. Once we agree
+                on scope, timeline and pricing, a private payment link is shared
+                for the agreed deposit or invoice.
+              </p>
+
+              <div className="mt-8 space-y-4 border-t border-white/10 pt-8 text-sm text-neutral-400">
+                <div className="flex items-center justify-between">
+                  <span>Step 1</span>
+                  <span className="text-white">Strategy call</span>
+                </div>
+
+                <div className="flex items-center justify-between">
+                  <span>Step 2</span>
+                  <span className="text-white">Proposal approval</span>
+                </div>
+
+                <div className="flex items-center justify-between">
+                  <span>Step 3</span>
+                  <span className="text-white">Secure payment</span>
+                </div>
+              </div>
+
+              <div className="mt-10">
+                <a
+                  href="https://calendly.com/radivojevicdavor79/30min"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex w-full items-center justify-center gap-3 rounded-full bg-white px-8 py-4 font-medium text-black transition hover:scale-[1.02]"
+                  >
+                    Book Strategy Call
+                    <ArrowUpRight className="h-4 w-4" />
+                  </a>
+              </div>
+
+              <p className="mt-5 text-center text-xs leading-5 text-neutral-500">
+                Secure payment links are shared privately after the project scope is approved.
               </p>
             </GlowCard>
           </div>
