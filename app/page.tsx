@@ -1,4 +1,7 @@
+"use client";
+
 import Image from "next/image";
+import { useEffect, useState } from "react";
 import type { ReactNode } from "react";
 import FadeIn from "@/components/FadeIn";
 import TawkChat from "@/components/TawkChat";
@@ -15,77 +18,423 @@ import {
   CalendarDays,
   ArrowUpRight,
   CheckCircle2,
-  Check,
   CreditCard,
   ShieldCheck,
 } from "lucide-react";
 
-const services = [
-  {
-    title: "Landing Pages",
-    text: "High-impact pages built to sell, book or capture leads.",
-    icon: Sparkles,
-  },
-  {
-    title: "Business Websites",
-    text: "Modern websites for local brands, creators and service businesses.",
-    icon: Globe,
-  },
-  {
-    title: "Web Apps",
-    text: "Clean digital tools with real functionality and sharp UI.",
-    icon: MonitorSmartphone,
-  },
-  {
-    title: "Redesigns",
-    text: "Turning outdated websites into premium online experiences.",
-    icon: RefreshCcw,
-  },
-];
+type Language = "en" | "sr";
 
-const processSteps = [
-  {
-    title: "Discovery",
-    text: "We define the goal, audience and direction of the project.",
-    icon: Search,
+const copy = {
+  en: {
+    nav: {
+      services: "Services",
+      work: "Work",
+      process: "Process",
+      booking: "Booking",
+      contact: "Contact",
+      startProject: "Start Project",
+    },
+    hero: {
+      eyebrow: "Valdr Studio",
+      title: "Premium websites built to make brands impossible to ignore.",
+      text: "We craft modern, premium digital experiences for businesses that want to stand out online.",
+      primary: "Start a Project",
+      secondary: "View Work",
+    },
+    proof: [
+      {
+        title: "Premium",
+        text: "Dark, modern, high-value visual identity.",
+      },
+      {
+        title: "Responsive",
+        text: "Built to look sharp on desktop and mobile.",
+      },
+      {
+        title: "Conversion-focused",
+        text: "Designed to help visitors take action.",
+      },
+    ],
+    services: {
+      eyebrow: "Services",
+      title: "Websites that feel premium, fast and intentional.",
+      items: [
+        {
+          title: "Landing Pages",
+          text: "High-impact pages built to sell, book or capture leads.",
+          icon: Sparkles,
+        },
+        {
+          title: "Business Websites",
+          text: "Modern websites for local brands, creators and service businesses.",
+          icon: Globe,
+        },
+        {
+          title: "Web Apps",
+          text: "Clean digital tools with real functionality and sharp UI.",
+          icon: MonitorSmartphone,
+        },
+        {
+          title: "Redesigns",
+          text: "Turning outdated websites into premium online experiences.",
+          icon: RefreshCcw,
+        },
+      ],
+    },
+    work: {
+      eyebrow: "Selected Work",
+      title: "Built with precision. Designed to stand out.",
+      text: "A selection of projects focused on usability, performance and premium visual experience.",
+      borTag: "Web App",
+      borTitle: "Bor Bus App",
+      borText:
+        "Public transport application for the city of Bor, focused on usability, routes and timetable access.",
+      pesmaricaTag: "App",
+      pesmaricaTitle: "Pesmarica App",
+      pesmaricaText:
+        "Personalized digital songbook for singers across eastern Serbia, designed for simple access and organisation on set.",
+      jovanTag: "In Progress",
+      jovanTitle: "Jovan PT",
+      jovanText:
+        "Premium personal trainer website focused on high-end branding and conversion.",
+    },
+    process: {
+      eyebrow: "Process",
+      titleLine1: "A simple process.",
+      titleLine2: "Built for clarity.",
+      items: [
+        {
+          title: "Discovery",
+          text: "We define the goal, audience and direction of the project.",
+          icon: Search,
+        },
+        {
+          title: "Strategy",
+          text: "Structure, positioning and premium visual direction.",
+          icon: PenTool,
+        },
+        {
+          title: "Build",
+          text: "Fast, responsive development focused on quality.",
+          icon: Code2,
+        },
+        {
+          title: "Launch",
+          text: "Final polish, optimization and going live.",
+          icon: Rocket,
+        },
+      ],
+    },
+    about: {
+      eyebrow: "About Valdr Studio",
+      title: "Premium digital experiences built with purpose.",
+      p1: "Valdr Studio is an independent creative web studio focused on building premium websites for brands that want to stand out, feel elevated and convert better online.",
+      p2Start: "Founded by",
+      p2End:
+        "we combine modern design, clean development and conversion-focused structure to create websites that feel intentional from the very first scroll.",
+      focusEyebrow: "Focus",
+      focusTitle: "Websites that actually feel premium.",
+      cards: [
+        {
+          title: "Design",
+          text: "Clean, premium and memorable experiences.",
+        },
+        {
+          title: "Development",
+          text: "Fast, responsive and modern builds.",
+        },
+        {
+          title: "Strategy",
+          text: "Structure designed to convert visitors.",
+        },
+        {
+          title: "Vision",
+          text: "Helping brands become impossible to ignore.",
+        },
+      ],
+    },
+    testimonials: {
+      eyebrow: "Testimonials",
+      title: "Early feedback from real projects.",
+      items: [
+        {
+          quote:
+            "The app is simple, clean and actually useful. Everything is easy to find and works smoothly.",
+          name: "Bor Bus App",
+          role: "Public transport project",
+        },
+        {
+          quote:
+            "The songbook feels organized and easy to use during performances. It saves time and keeps everything in one place.",
+          name: "Pesmarica App",
+          role: "Digital songbook project",
+        },
+        {
+          quote:
+            "The direction already feels premium and serious. The goal is to build something that looks high-end, not generic.",
+          name: "Jovan PT",
+          role: "Website in progress",
+        },
+      ],
+    },
+    booking: {
+      eyebrow: "Book a Call",
+      title: "Let’s map out your premium web presence.",
+      text: "Book a short strategy call and we’ll discuss your brand, goals, offer, timeline and the best direction for your website.",
+      benefits: [
+        "Clear project direction",
+        "Premium visual strategy",
+        "Next steps explained",
+      ],
+      cardTitle: "Free Website Strategy Call",
+      cardText:
+        "A focused 30-minute call to understand your project and see if Valdr Studio is the right fit.",
+      durationLabel: "Duration",
+      duration: "30 minutes",
+      formatLabel: "Format",
+      format: "Online call",
+      priceLabel: "Price",
+      price: "Free",
+      button: "Book Strategy Call",
+      note: "No pressure. Just clarity on what your website needs.",
+    },
+    payment: {
+      eyebrow: "Client Payments",
+      title: "Secure payments after the project is approved.",
+      text: "Payments are never required before we understand your project. First, we discuss your goals, scope and timeline. After the proposal is approved, you receive a secure payment link to reserve your project slot.",
+      approvalTitle: "Approval first",
+      approvalText:
+        "You only pay after the project direction and scope are clear.",
+      checkoutTitle: "Secure checkout",
+      checkoutText:
+        "Approved payments are handled safely through Stripe Checkout.",
+      cardEyebrow: "Payment Flow",
+      cardTitleLine1: "Proposal first.",
+      cardTitleLine2: "Payment after.",
+      cardText:
+        "Every project starts with a short strategy call. Once we agree on scope, timeline and pricing, a private payment link is shared for the agreed deposit or invoice.",
+      step1: "Strategy call",
+      step2: "Proposal approval",
+      step3: "Secure payment",
+      button: "Book Strategy Call",
+      note: "Secure payment links are shared privately after the project scope is approved.",
+    },
+    contact: {
+      eyebrow: "Contact",
+      mobileTitle: "Let’s build something exceptional.",
+      desktopTitleLine1: "Let’s build something exceptional.",
+      desktopTitleLine2: "Built to stand above the noise.",
+      text: "Whether you need a premium website, redesign or a digital experience that actually stands out — let’s talk.",
+      whatsapp: "WhatsApp",
+      email: "Email",
+    },
   },
-  {
-    title: "Strategy",
-    text: "Structure, positioning and premium visual direction.",
-    icon: PenTool,
-  },
-  {
-    title: "Build",
-    text: "Fast, responsive development focused on quality.",
-    icon: Code2,
-  },
-  {
-    title: "Launch",
-    text: "Final polish, optimization and going live.",
-    icon: Rocket,
-  },
-];
 
-const testimonials = [
-  {
-    quote:
-      "The app is simple, clean and actually useful. Everything is easy to find and works smoothly.",
-    name: "Bor Bus App",
-    role: "Public transport project",
+  sr: {
+    nav: {
+      services: "Usluge",
+      work: "Radovi",
+      process: "Proces",
+      booking: "Poziv",
+      contact: "Kontakt",
+      startProject: "Započni projekat",
+    },
+    hero: {
+      eyebrow: "Valdr Studio",
+      title: "Premium sajtovi napravljeni da vaš brend bude nemoguće ignorisati.",
+      text: "Kreiramo moderne, premium digitalne prezentacije za biznise koji žele da izgledaju ozbiljno, kvalitetno i drugačije online.",
+      primary: "Započni projekat",
+      secondary: "Pogledaj radove",
+    },
+    proof: [
+      {
+        title: "Premium",
+        text: "Tamna, moderna i vizuelno jaka prezentacija brenda.",
+      },
+      {
+        title: "Responsive",
+        text: "Sajt izgleda oštro i profesionalno na telefonu i desktopu.",
+      },
+      {
+        title: "Fokus na konverziju",
+        text: "Dizajniran da posetioca vodi ka jasnoj akciji.",
+      },
+    ],
+    services: {
+      eyebrow: "Usluge",
+      title: "Sajtovi koji deluju premium, brzo i namerno dizajnirano.",
+      items: [
+        {
+          title: "Landing stranice",
+          text: "Stranice visokog uticaja napravljene da prodaju, rezervišu ili prikupe upite.",
+          icon: Sparkles,
+        },
+        {
+          title: "Biznis sajtovi",
+          text: "Moderni sajtovi za lokalne brendove, kreatore i uslužne biznise.",
+          icon: Globe,
+        },
+        {
+          title: "Web aplikacije",
+          text: "Čisti digitalni alati sa pravom funkcionalnošću i oštrim UI dizajnom.",
+          icon: MonitorSmartphone,
+        },
+        {
+          title: "Redizajn",
+          text: "Pretvaranje zastarelih sajtova u premium online iskustva.",
+          icon: RefreshCcw,
+        },
+      ],
+    },
+    work: {
+      eyebrow: "Odabrani radovi",
+      title: "Napravljeno precizno. Dizajnirano da se istakne.",
+      text: "Izbor projekata fokusiranih na upotrebljivost, performanse i premium vizuelni doživljaj.",
+      borTag: "Web aplikacija",
+      borTitle: "Bor Bus App",
+      borText:
+        "Aplikacija za javni prevoz grada Bora, fokusirana na jednostavno korišćenje, linije i red vožnje.",
+      pesmaricaTag: "Aplikacija",
+      pesmaricaTitle: "Pesmarica App",
+      pesmaricaText:
+        "Personalizovana digitalna pesmarica za pevače u istočnoj Srbiji, napravljena za brz pristup i organizaciju tokom nastupa.",
+      jovanTag: "U izradi",
+      jovanTitle: "Jovan PT",
+      jovanText:
+        "Premium sajt za personalnog trenera fokusiran na high-end brending i konverziju.",
+    },
+    process: {
+      eyebrow: "Proces",
+      titleLine1: "Jednostavan proces.",
+      titleLine2: "Napravljen za jasnoću.",
+      items: [
+        {
+          title: "Discovery",
+          text: "Definišemo cilj, publiku i smer projekta pre dizajna.",
+          icon: Search,
+        },
+        {
+          title: "Strategija",
+          text: "Struktura, pozicioniranje i premium vizuelni pravac.",
+          icon: PenTool,
+        },
+        {
+          title: "Izrada",
+          text: "Brz, responzivan razvoj fokusiran na kvalitet.",
+          icon: Code2,
+        },
+        {
+          title: "Launch",
+          text: "Finalno poliranje, optimizacija i puštanje sajta uživo.",
+          icon: Rocket,
+        },
+      ],
+    },
+    about: {
+      eyebrow: "O Valdr Studio",
+      title: "Premium digitalna iskustva napravljena sa jasnom namerom.",
+      p1: "Valdr Studio je nezavisni kreativni web studio fokusiran na izradu premium sajtova za brendove koji žele da se istaknu, deluju ozbiljnije i bolje konvertuju online.",
+      p2Start: "Osnovao ga je",
+      p2End:
+        "spajamo moderan dizajn, čist development i strukturu fokusiranu na konverziju kako bismo kreirali sajtove koji deluju promišljeno od prvog skrola.",
+      focusEyebrow: "Fokus",
+      focusTitle: "Sajtovi koji zaista deluju premium.",
+      cards: [
+        {
+          title: "Dizajn",
+          text: "Čista, premium i pamtljiva iskustva.",
+        },
+        {
+          title: "Development",
+          text: "Brze, moderne i responzivne izrade.",
+        },
+        {
+          title: "Strategija",
+          text: "Struktura dizajnirana da pretvara posetioce u upite.",
+        },
+        {
+          title: "Vizija",
+          text: "Pomažemo brendovima da postanu nemogući za ignorisanje.",
+        },
+      ],
+    },
+    testimonials: {
+      eyebrow: "Utisci",
+      title: "Rani feedback iz stvarnih projekata.",
+      items: [
+        {
+          quote:
+            "Aplikacija je jednostavna, čista i stvarno korisna. Sve se lako pronalazi i radi glatko.",
+          name: "Bor Bus App",
+          role: "Projekat javnog prevoza",
+        },
+        {
+          quote:
+            "Pesmarica je organizovana i laka za korišćenje tokom nastupa. Štedi vreme i drži sve na jednom mestu.",
+          name: "Pesmarica App",
+          role: "Digitalna pesmarica",
+        },
+        {
+          quote:
+            "Pravac već deluje premium i ozbiljno. Cilj je da se napravi nešto što izgleda high-end, a ne generički.",
+          name: "Jovan PT",
+          role: "Sajt u izradi",
+        },
+      ],
+    },
+    booking: {
+      eyebrow: "Zakaži poziv",
+      title: "Hajde da definišemo tvoje premium web prisustvo.",
+      text: "Zakaži kratak strategy call gde prolazimo kroz tvoj brend, cilj, ponudu, rokove i najbolji pravac za tvoj sajt.",
+      benefits: [
+        "Jasan pravac projekta",
+        "Premium vizuelna strategija",
+        "Objašnjeni sledeći koraci",
+      ],
+      cardTitle: "Besplatan Website Strategy Call",
+      cardText:
+        "Fokusiran 30-minutni poziv da razumemo projekat i vidimo da li je Valdr Studio pravi izbor.",
+      durationLabel: "Trajanje",
+      duration: "30 minuta",
+      formatLabel: "Format",
+      format: "Online poziv",
+      priceLabel: "Cena",
+      price: "Besplatno",
+      button: "Zakaži poziv",
+      note: "Bez pritiska. Samo jasnija slika šta je tvom sajtu potrebno.",
+    },
+    payment: {
+      eyebrow: "Plaćanja klijenata",
+      title: "Sigurno plaćanje tek nakon odobrenog projekta.",
+      text: "Plaćanje se nikada ne traži pre nego što razumemo tvoj projekat. Prvo prolazimo kroz ciljeve, obim i rokove. Nakon odobrenog predloga, dobijaš siguran payment link za rezervaciju termina projekta.",
+      approvalTitle: "Prvo odobrenje",
+      approvalText:
+        "Plaćanje ide tek kada su pravac projekta i obim posla jasni.",
+      checkoutTitle: "Siguran checkout",
+      checkoutText:
+        "Odobrena plaćanja se bezbedno obrađuju kroz Stripe Checkout.",
+      cardEyebrow: "Tok plaćanja",
+      cardTitleLine1: "Prvo predlog.",
+      cardTitleLine2: "Plaćanje posle.",
+      cardText:
+        "Svaki projekat počinje kratkim strategy call-om. Kada se dogovorimo oko obima, rokova i cene, privatni payment link se šalje za dogovoreni depozit ili fakturu.",
+      step1: "Strategy call",
+      step2: "Odobren predlog",
+      step3: "Sigurno plaćanje",
+      button: "Zakaži poziv",
+      note: "Sigurni payment linkovi se šalju privatno nakon što se odobri obim projekta.",
+    },
+    contact: {
+      eyebrow: "Kontakt",
+      mobileTitle: "Hajde da napravimo nešto izuzetno.",
+      desktopTitleLine1: "Hajde da napravimo nešto izuzetno.",
+      desktopTitleLine2: "Dizajnirano da stoji iznad buke.",
+      text: "Bilo da ti treba premium sajt, redizajn ili digitalno iskustvo koje se stvarno ističe — hajde da pričamo.",
+      whatsapp: "WhatsApp",
+      email: "Email",
+    },
   },
-  {
-    quote:
-      "The songbook feels organized and easy to use during performances. It saves time and keeps everything in one place.",
-    name: "Pesmarica App",
-    role: "Digital songbook project",
-  },
-  {
-    quote:
-      "The direction already feels premium and serious. The goal is to build something that looks high-end, not generic.",
-    name: "Jovan PT",
-    role: "Website in progress",
-  },
-];
+};
 
 function GlowCard({
   children,
@@ -112,6 +461,23 @@ function GlowCard({
 }
 
 export default function Home() {
+  const [language, setLanguage] = useState<Language>("en");
+
+  useEffect(() => {
+    const savedLanguage = window.localStorage.getItem("valdr-language");
+
+    if (savedLanguage === "en" || savedLanguage === "sr") {
+      setLanguage(savedLanguage);
+    }
+  }, []);
+
+  function changeLanguage(nextLanguage: Language) {
+    setLanguage(nextLanguage);
+    window.localStorage.setItem("valdr-language", nextLanguage);
+  }
+
+  const t = copy[language];
+
   return (
     <main className="min-h-screen bg-[#0A0A0A] text-white">
       {/* NAVBAR */}
@@ -130,28 +496,52 @@ export default function Home() {
 
           <nav className="hidden items-center gap-8 text-sm text-neutral-400 md:flex">
             <a href="#services" className="transition hover:text-white">
-              Services
+              {t.nav.services}
             </a>
             <a href="#work" className="transition hover:text-white">
-              Work
+              {t.nav.work}
             </a>
             <a href="#process" className="transition hover:text-white">
-              Process
+              {t.nav.process}
             </a>
             <a href="#booking" className="transition hover:text-white">
-              Booking
+              {t.nav.booking}
             </a>
             <a href="#contact" className="transition hover:text-white">
-              Contact
+              {t.nav.contact}
             </a>
           </nav>
 
-          <a
-            href="#contact"
-            className="hidden rounded-full border border-white/10 bg-white/5 px-5 py-2 text-sm font-medium transition hover:bg-white hover:text-black sm:inline-flex"
-          >
-            Start Project
-          </a>
+          <div className="hidden items-center gap-3 sm:flex">
+            <div className="flex rounded-full border border-white/10 bg-white/[0.03] p-1 text-xs font-medium text-neutral-400">
+              <button
+                type="button"
+                onClick={() => changeLanguage("en")}
+                className={`rounded-full px-3 py-1.5 transition ${
+                  language === "en" ? "bg-white text-black" : "hover:text-white"
+                }`}
+              >
+                EN
+              </button>
+
+              <button
+                type="button"
+                onClick={() => changeLanguage("sr")}
+                className={`rounded-full px-3 py-1.5 transition ${
+                  language === "sr" ? "bg-white text-black" : "hover:text-white"
+                }`}
+              >
+                SR
+              </button>
+            </div>
+
+            <a
+              href="#contact"
+              className="rounded-full border border-white/10 bg-white/5 px-5 py-2 text-sm font-medium transition hover:bg-white hover:text-black"
+            >
+              {t.nav.startProject}
+            </a>
+          </div>
         </div>
       </header>
 
@@ -167,16 +557,15 @@ export default function Home() {
 
         <div className="relative z-10 mx-auto max-w-6xl text-center">
           <p className="mb-6 text-sm uppercase tracking-[0.3em] text-neutral-400">
-            Valdr Studio
+            {t.hero.eyebrow}
           </p>
 
           <h1 className="mx-auto max-w-4xl text-[44px] font-semibold leading-[0.98] tracking-tight sm:text-6xl lg:text-5xl">
-            Premium websites built to make brands impossible to ignore.
+            {t.hero.title}
           </h1>
 
           <p className="mx-auto mt-8 max-w-2xl text-base leading-7 text-neutral-400 sm:text-lg">
-            We craft modern, premium digital experiences for businesses that
-            want to stand out online.
+            {t.hero.text}
           </p>
 
           <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
@@ -184,14 +573,14 @@ export default function Home() {
               href="#contact"
               className="min-w-[220px] rounded-full bg-white px-8 py-4 font-medium text-black transition hover:scale-105"
             >
-              Start a Project
+              {t.hero.primary}
             </a>
 
             <a
               href="#work"
               className="min-w-[220px] rounded-full border border-white/10 bg-white/5 px-8 py-4 font-medium backdrop-blur-sm transition hover:bg-white/10"
             >
-              View Work
+              {t.hero.secondary}
             </a>
           </div>
         </div>
@@ -203,26 +592,12 @@ export default function Home() {
           <div className="absolute left-1/2 top-0 h-52 w-[500px] -translate-x-1/2 rounded-full bg-white/[0.03] blur-[100px]" />
 
           <div className="mx-auto grid max-w-7xl gap-6 text-center md:grid-cols-3">
-            <div>
-              <p className="text-2xl font-semibold">Premium</p>
-              <p className="mt-2 text-sm text-neutral-500">
-                Dark, modern, high-value visual identity.
-              </p>
-            </div>
-
-            <div>
-              <p className="text-2xl font-semibold">Responsive</p>
-              <p className="mt-2 text-sm text-neutral-500">
-                Built to look sharp on desktop and mobile.
-              </p>
-            </div>
-
-            <div>
-              <p className="text-2xl font-semibold">Conversion-focused</p>
-              <p className="mt-2 text-sm text-neutral-500">
-                Designed to help visitors take action.
-              </p>
-            </div>
+            {t.proof.map((item) => (
+              <div key={item.title}>
+                <p className="text-2xl font-semibold">{item.title}</p>
+                <p className="mt-2 text-sm text-neutral-500">{item.text}</p>
+              </div>
+            ))}
           </div>
         </section>
       </FadeIn>
@@ -233,16 +608,16 @@ export default function Home() {
           <div className="mx-auto max-w-7xl">
             <div className="mb-16 max-w-3xl">
               <p className="mb-4 text-sm uppercase tracking-[0.3em] text-neutral-500">
-                Services
+                {t.services.eyebrow}
               </p>
 
               <h2 className="text-4xl font-semibold tracking-tight sm:text-5xl">
-                Websites that feel premium, fast and intentional.
+                {t.services.title}
               </h2>
             </div>
 
             <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-              {services.map((service) => {
+              {t.services.items.map((service) => {
                 const Icon = service.icon;
 
                 return (
@@ -273,18 +648,15 @@ export default function Home() {
             <div className="mb-16 flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
               <div>
                 <p className="mb-4 text-sm uppercase tracking-[0.3em] text-neutral-500">
-                  Selected Work
+                  {t.work.eyebrow}
                 </p>
 
                 <h2 className="max-w-3xl text-4xl font-semibold tracking-tight sm:text-5xl">
-                  Built with precision. Designed to stand out.
+                  {t.work.title}
                 </h2>
               </div>
 
-              <p className="max-w-md text-neutral-500">
-                A selection of projects focused on usability, performance and
-                premium visual experience.
-              </p>
+              <p className="max-w-md text-neutral-500">{t.work.text}</p>
             </div>
 
             <div className="grid gap-8 lg:grid-cols-3">
@@ -303,17 +675,16 @@ export default function Home() {
 
                   <div className="absolute bottom-8 left-8">
                     <span className="rounded-full border border-white/10 bg-black/40 px-4 py-2 text-sm text-neutral-200 backdrop-blur-sm">
-                      Web App
+                      {t.work.borTag}
                     </span>
                   </div>
                 </div>
 
                 <div className="p-8">
-                  <h3 className="text-2xl font-semibold">Bor Bus App</h3>
-                  <p className="mt-4 text-neutral-400">
-                    Public transport application for the city of Bor, focused on
-                    usability, routes and timetable access.
-                  </p>
+                  <h3 className="text-2xl font-semibold">
+                    {t.work.borTitle}
+                  </h3>
+                  <p className="mt-4 text-neutral-400">{t.work.borText}</p>
                 </div>
               </div>
 
@@ -332,16 +703,17 @@ export default function Home() {
 
                   <div className="absolute bottom-8 left-8">
                     <span className="rounded-full border border-white/10 bg-black/40 px-4 py-2 text-sm text-neutral-200 backdrop-blur-sm">
-                      App
+                      {t.work.pesmaricaTag}
                     </span>
                   </div>
                 </div>
 
                 <div className="p-8">
-                  <h3 className="text-2xl font-semibold">Pesmarica App</h3>
+                  <h3 className="text-2xl font-semibold">
+                    {t.work.pesmaricaTitle}
+                  </h3>
                   <p className="mt-4 text-neutral-400">
-                    Personalized digital songbook for singers across eastern
-                    Serbia, designed for simple access and organisation on set.
+                    {t.work.pesmaricaText}
                   </p>
                 </div>
               </div>
@@ -353,17 +725,16 @@ export default function Home() {
 
                   <div className="flex h-full items-end p-8">
                     <span className="rounded-full border border-yellow-500/20 bg-yellow-500/10 px-4 py-2 text-sm text-yellow-300">
-                      In Progress
+                      {t.work.jovanTag}
                     </span>
                   </div>
                 </div>
 
                 <div className="p-8">
-                  <h3 className="text-2xl font-semibold">Jovan PT</h3>
-                  <p className="mt-4 text-neutral-400">
-                    Premium personal trainer website focused on high-end
-                    branding and conversion.
-                  </p>
+                  <h3 className="text-2xl font-semibold">
+                    {t.work.jovanTitle}
+                  </h3>
+                  <p className="mt-4 text-neutral-400">{t.work.jovanText}</p>
                 </div>
               </div>
             </div>
@@ -380,18 +751,18 @@ export default function Home() {
           <div className="mx-auto max-w-7xl">
             <div className="mb-20 max-w-3xl">
               <p className="mb-4 text-sm uppercase tracking-[0.3em] text-neutral-500">
-                Process
+                {t.process.eyebrow}
               </p>
 
               <h2 className="text-4xl font-semibold tracking-tight sm:text-5xl">
-                A simple process.
+                {t.process.titleLine1}
                 <br />
-                Built for clarity.
+                {t.process.titleLine2}
               </h2>
             </div>
 
             <div className="grid gap-8 lg:grid-cols-4">
-              {processSteps.map((step) => {
+              {t.process.items.map((step) => {
                 const Icon = step.icon;
 
                 return (
@@ -420,24 +791,21 @@ export default function Home() {
             <div className="grid gap-16 lg:grid-cols-2 lg:items-center">
               <div>
                 <p className="mb-4 text-sm uppercase tracking-[0.25em] text-white/40">
-                  About Valdr Studio
+                  {t.about.eyebrow}
                 </p>
 
                 <h2 className="max-w-xl text-4xl font-semibold leading-tight tracking-tight text-white md:text-5xl">
-                  Premium digital experiences built with purpose.
+                  {t.about.title}
                 </h2>
 
                 <p className="mt-8 max-w-xl text-lg leading-relaxed text-white/60">
-                  Valdr Studio is an independent creative web studio focused on
-                  building premium websites for brands that want to stand out,
-                  feel elevated and convert better online.
+                  {t.about.p1}
                 </p>
 
                 <p className="mt-6 max-w-xl text-lg leading-relaxed text-white/60">
-                  Founded by <span className="text-white">Davor Radivojevic</span>
-                  , we combine modern design, clean development and
-                  conversion-focused structure to create websites that feel
-                  intentional from the very first scroll.
+                  {t.about.p2Start}{" "}
+                  <span className="text-white">Davor Radivojevic</span>,{" "}
+                  {t.about.p2End}
                 </p>
               </div>
 
@@ -447,42 +815,26 @@ export default function Home() {
                 <div className="relative space-y-8">
                   <div>
                     <p className="text-sm uppercase tracking-[0.2em] text-white/40">
-                      Focus
+                      {t.about.focusEyebrow}
                     </p>
 
                     <h3 className="mt-2 text-2xl font-medium text-white">
-                      Websites that actually feel premium.
+                      {t.about.focusTitle}
                     </h3>
                   </div>
 
                   <div className="grid gap-6 sm:grid-cols-2">
-                    <GlowCard innerClassName="min-h-[160px] p-6">
-                      <p className="text-sm text-white/45">Design</p>
-                      <p className="mt-2 text-lg leading-7 text-white">
-                        Clean, premium and memorable experiences.
-                      </p>
-                    </GlowCard>
-
-                    <GlowCard innerClassName="min-h-[160px] p-6">
-                      <p className="text-sm text-white/45">Development</p>
-                      <p className="mt-2 text-lg leading-7 text-white">
-                        Fast, responsive and modern builds.
-                      </p>
-                    </GlowCard>
-
-                    <GlowCard innerClassName="min-h-[160px] p-6">
-                      <p className="text-sm text-white/45">Strategy</p>
-                      <p className="mt-2 text-lg leading-7 text-white">
-                        Structure designed to convert visitors.
-                      </p>
-                    </GlowCard>
-
-                    <GlowCard innerClassName="min-h-[160px] p-6">
-                      <p className="text-sm text-white/45">Vision</p>
-                      <p className="mt-2 text-lg leading-7 text-white">
-                        Helping brands become impossible to ignore.
-                      </p>
-                    </GlowCard>
+                    {t.about.cards.map((card) => (
+                      <GlowCard
+                        key={card.title}
+                        innerClassName="min-h-[160px] p-6"
+                      >
+                        <p className="text-sm text-white/45">{card.title}</p>
+                        <p className="mt-2 text-lg leading-7 text-white">
+                          {card.text}
+                        </p>
+                      </GlowCard>
+                    ))}
                   </div>
                 </div>
               </div>
@@ -497,16 +849,16 @@ export default function Home() {
           <div className="mx-auto max-w-7xl">
             <div className="mb-16 max-w-3xl">
               <p className="mb-4 text-sm uppercase tracking-[0.3em] text-neutral-500">
-                Testimonials
+                {t.testimonials.eyebrow}
               </p>
 
               <h2 className="text-4xl font-semibold tracking-tight sm:text-5xl">
-                Early feedback from real projects.
+                {t.testimonials.title}
               </h2>
             </div>
 
             <div className="grid gap-8 lg:grid-cols-3">
-              {testimonials.map((item) => (
+              {t.testimonials.items.map((item) => (
                 <GlowCard key={item.name} innerClassName="p-8">
                   <p className="text-lg leading-8 text-neutral-300">
                     “{item.quote}”
@@ -528,92 +880,87 @@ export default function Home() {
       {/* BOOKING */}
       <FadeIn>
         <section
-        id="booking"
-        className="relative overflow-hidden border-t border-white/10 px-6 py-32"
+          id="booking"
+          className="relative overflow-hidden border-t border-white/10 px-6 py-32"
         >
-          <div className="absolute left-1/2 top-0 h-[520px] w-[760px] -translate-x-1/2 rounded-full bg-white/[0.035] blure-[150px]" />
+          <div className="absolute left-1/2 top-0 h-[520px] w-[760px] -translate-x-1/2 rounded-full bg-white/[0.035] blur-[150px]" />
 
-          <div className="realtive z-10 mx-auto grid max-w-7xl gap-10 lg:grid-cols-1[1.1fr_0.9fr] lg:items-center ">
+          <div className="relative z-10 mx-auto grid max-w-7xl gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
             <div>
               <p className="mb-4 text-sm uppercase tracking-[0.3em] text-neutral-500">
-                Book a Call
+                {t.booking.eyebrow}
               </p>
 
               <h2 className="max-w-3xl text-4xl font-semibold tracking-tight sm:text-5xl">
-                Let&apos;s map out your premium web presence.
+                {t.booking.title}
               </h2>
 
               <p className="mt-6 max-w-2xl text-lg leading-8 text-neutral-400">
-                Book a short strategy call and we&apos;ll discuss your brand, goals, offer, timeline and the best dierction for your website.
+                {t.booking.text}
               </p>
 
               <div className="mt-10 grid gap-4 sm:grid-cols-3">
-                {[
-                  "Clear project direction",
-                  "Premium visual strategy",
-                  "Next steps explained",
-                ].map((item) => (
-                  <div 
-                  key={item}
-                  className="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/[0.03] px-4 py-4 text-sm text-neutral-300"
+                {t.booking.benefits.map((item) => (
+                  <div
+                    key={item}
+                    className="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/[0.03] px-4 py-4 text-sm text-neutral-300"
                   >
                     <CheckCircle2 className="h-4 w-4 text-white" />
                     <span>{item}</span>
-                    </div>
+                  </div>
                 ))}
               </div>
             </div>
 
             <GlowCard innerClassName="p-8 md:p-10">
-              <div className="mb-8 flex h-14 w-14 items-center justify-center rounded-2xl border-white/10 bg-white/[0.04]">
-              <CalendarDays className="h-6 w-6 text-white" strokeWidth={1.6} />
+              <div className="mb-8 flex h-14 w-14 items-center justify-center rounded-2xl border border-white/10 bg-white/[0.04]">
+                <CalendarDays className="h-6 w-6 text-white" strokeWidth={1.6} />
               </div>
 
               <h3 className="text-3xl font-semibold tracking-tight">
-                Free Website Strategy Call
+                {t.booking.cardTitle}
               </h3>
 
               <p className="mt-4 leading-7 text-neutral-400">
-                A focused 30-minute call to understand your project and see if
-                Valdr Studio is the right fit.
+                {t.booking.cardText}
               </p>
 
               <div className="mt-8 space-y-4 border-t border-white/10 pt-8 text-sm text-neutral-400">
-              <div className="flex items-center justify-between">
-                <span>Duration</span>
-                <span className="text-white">30 minutes</span>
+                <div className="flex items-center justify-between">
+                  <span>{t.booking.durationLabel}</span>
+                  <span className="text-white">{t.booking.duration}</span>
+                </div>
+
+                <div className="flex items-center justify-between">
+                  <span>{t.booking.formatLabel}</span>
+                  <span className="text-white">{t.booking.format}</span>
+                </div>
+
+                <div className="flex items-center justify-between">
+                  <span>{t.booking.priceLabel}</span>
+                  <span className="text-white">{t.booking.price}</span>
+                </div>
               </div>
 
-              <div className=" flex items-center justify-between">
-                <span>Format</span>
-                <span className="text-white">Online Call</span>
-              </div>
-
-              <div className="flex items-center justify-between">
-                <span>Price</span>
-                <span className="text-white">Free</span>
-              </div>
-              </div>
-
-              <a 
-              href="https://calendly.com/radivojevicdavor79/30min"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-10 inline-flex w-full items-center justify-center gap-3 rounded-full bg-white px-8 py-4 font-medium text-black transition hover-scare-[1.02]"
+              <a
+                href="https://calendly.com/radivojevicdavor79/30min"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-10 inline-flex w-full items-center justify-center gap-3 rounded-full bg-white px-8 py-4 font-medium text-black transition hover:scale-[1.02]"
               >
-                Book Strategy Call
+                {t.booking.button}
                 <ArrowUpRight className="h-4 w-4" />
               </a>
 
               <p className="mt-5 text-center text-xs text-neutral-500">
-                No pressure. Just clarity on waht your website needs.
+                {t.booking.note}
               </p>
             </GlowCard>
           </div>
         </section>
       </FadeIn>
 
-      {/*Pament*/}
+      {/* PAYMENT */}
       <FadeIn>
         <section
           id="payment"
@@ -625,31 +972,28 @@ export default function Home() {
           <div className="relative z-10 mx-auto grid max-w-7xl gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
             <div>
               <p className="mb-4 text-sm uppercase tracking-[0.3em] text-neutral-500">
-                Client Payments
+                {t.payment.eyebrow}
               </p>
 
               <h2 className="max-w-3xl text-4xl font-semibold tracking-tight sm:text-5xl">
-                Secure payments after the project is approved.
+                {t.payment.title}
               </h2>
 
               <p className="mt-6 max-w-2xl text-lg leading-8 text-neutral-400">
-                Payments are never required before we understand your project.
-                First, we discuss your goals, scope and timeline. After the
-                proposal is approved, you receive a secure payment link to
-                reserve your project slot.
+                {t.payment.text}
               </p>
 
               <div className="mt-10 grid gap-4 sm:grid-cols-2">
                 {[
                   {
                     icon: ShieldCheck,
-                    title: "Approval first",
-                    text: "You only pay after the project direction and scope are clear.",
+                    title: t.payment.approvalTitle,
+                    text: t.payment.approvalText,
                   },
                   {
                     icon: CreditCard,
-                    title: "Secure checkout",
-                    text: "Approved payments are handled safely through Stripe Checkout.",
+                    title: t.payment.checkoutTitle,
+                    text: t.payment.checkoutText,
                   },
                 ].map((item) => {
                   const Icon = item.icon;
@@ -678,13 +1022,13 @@ export default function Home() {
               <div className="mb-8 flex items-center justify-between gap-6">
                 <div>
                   <p className="text-sm uppercase tracking-[0.25em] text-neutral-500">
-                    Payment Flow
+                    {t.payment.cardEyebrow}
                   </p>
 
                   <h3 className="mt-3 text-3xl font-semibold tracking-tight">
-                    Proposal first.
+                    {t.payment.cardTitleLine1}
                     <br />
-                    Payment after.
+                    {t.payment.cardTitleLine2}
                   </h3>
                 </div>
 
@@ -694,25 +1038,23 @@ export default function Home() {
               </div>
 
               <p className="leading-7 text-neutral-400">
-                Every project starts with a short strategy call. Once we agree
-                on scope, timeline and pricing, a private payment link is shared
-                for the agreed deposit or invoice.
+                {t.payment.cardText}
               </p>
 
               <div className="mt-8 space-y-4 border-t border-white/10 pt-8 text-sm text-neutral-400">
                 <div className="flex items-center justify-between">
                   <span>Step 1</span>
-                  <span className="text-white">Strategy call</span>
+                  <span className="text-white">{t.payment.step1}</span>
                 </div>
 
                 <div className="flex items-center justify-between">
                   <span>Step 2</span>
-                  <span className="text-white">Proposal approval</span>
+                  <span className="text-white">{t.payment.step2}</span>
                 </div>
 
                 <div className="flex items-center justify-between">
                   <span>Step 3</span>
-                  <span className="text-white">Secure payment</span>
+                  <span className="text-white">{t.payment.step3}</span>
                 </div>
               </div>
 
@@ -722,14 +1064,14 @@ export default function Home() {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex w-full items-center justify-center gap-3 rounded-full bg-white px-8 py-4 font-medium text-black transition hover:scale-[1.02]"
-                  >
-                    Book Strategy Call
-                    <ArrowUpRight className="h-4 w-4" />
-                  </a>
+                >
+                  {t.payment.button}
+                  <ArrowUpRight className="h-4 w-4" />
+                </a>
               </div>
 
               <p className="mt-5 text-center text-xs leading-5 text-neutral-500">
-                Secure payment links are shared privately after the project scope is approved.
+                {t.payment.note}
               </p>
             </GlowCard>
           </div>
@@ -746,24 +1088,23 @@ export default function Home() {
 
           <div className="relative z-10 mx-auto max-w-5xl text-center">
             <p className="mb-6 text-sm uppercase tracking-[0.3em] text-neutral-500">
-              Contact
+              {t.contact.eyebrow}
             </p>
 
             <h2 className="font-semibold tracking-tight">
               <span className="mx-auto block max-w-[320px] text-[38px] leading-[1.02] sm:hidden">
-                Let&apos;s build something exceptional.
+                {t.contact.mobileTitle}
               </span>
 
               <span className="hidden text-4xl leading-[0.98] sm:block sm:text-6xl">
-                Let&apos;s build something exceptional.
+                {t.contact.desktopTitleLine1}
                 <br />
-                Built to stand above the noise.
+                {t.contact.desktopTitleLine2}
               </span>
             </h2>
 
             <p className="mx-auto mt-8 max-w-2xl text-lg text-neutral-400">
-              Whether you need a premium website, redesign or a digital
-              experience that actually stands out — let&apos;s talk.
+              {t.contact.text}
             </p>
 
             <div className="mt-12 flex flex-col items-center justify-center gap-4 sm:flex-row">
@@ -773,14 +1114,14 @@ export default function Home() {
                 rel="noopener noreferrer"
                 className="min-w-[220px] rounded-full bg-white px-8 py-4 font-medium text-black transition hover:scale-105"
               >
-                WhatsApp
+                {t.contact.whatsapp}
               </a>
 
               <a
                 href="mailto:valdrstudio@gmail.com"
                 className="min-w-[220px] rounded-full border border-white/10 bg-white/5 px-8 py-4 font-medium backdrop-blur-sm transition hover:bg-white/10"
               >
-                Email
+                {t.contact.email}
               </a>
             </div>
 
