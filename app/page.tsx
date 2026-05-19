@@ -661,62 +661,84 @@ export default function Home() {
 
             <div className="grid gap-8 lg:grid-cols-3">
               {/* BOR BUS */}
-              <div className="group overflow-hidden rounded-[32px] border border-white/10 bg-white/[0.03] transition duration-500 hover:-translate-y-2 hover:border-white/20 hover:shadow-[0_20px_80px_rgba(0,0,0,0.35)]">
-                <div className="relative h-[300px] overflow-hidden bg-neutral-950">
-                  <Image
-                    src="/images/favicon.png.png"
-                    alt="Bor Bus App"
-                    fill
-                    sizes="(min-width: 1024px) 33vw, 100vw"
-                    className="object-cover transition duration-700 group-hover:scale-[1.07]"
-                  />
+              <a
+                 href="https://borskiprevoz.netlify.app/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group block overflow-hidden rounded-[32px] border border-white/10 bg-white/[0.03] transition duration-500 hover:-translate-y-2 hover:border-white/20 hover:shadow-[0_20px_80px_rgba(0,0,0,0.35)]"
+                  >
+                <div className="relative h-[240px] md:h-[300px] overflow-hidden bg-neutral-950">
+                <Image
+                src="/images/favicon.png.png"
+                alt="Bor Bus App"
+                fill
+                sizes="(min-width: 1024px) 33vw, 100vw"
+                className="object-cover transition duration-700 group-hover:scale-[1.07]"
+                />
 
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
 
-                  <div className="absolute bottom-8 left-8">
-                    <span className="rounded-full border border-white/10 bg-black/40 px-4 py-2 text-sm text-neutral-200 backdrop-blur-sm">
-                      {t.work.borTag}
-                    </span>
-                  </div>
-                </div>
+              <div className="absolute bottom-8 left-8">
+             <span className="rounded-full border border-white/10 bg-black/40 px-4 py-2 text-sm text-neutral-200 backdrop-blur-sm">
+           {t.work.borTag}
+        </span>
+      </div>
+    </div>
 
-                <div className="p-8">
-                  <h3 className="text-2xl font-semibold">
-                    {t.work.borTitle}
-                  </h3>
-                  <p className="mt-4 text-neutral-400">{t.work.borText}</p>
-                </div>
-              </div>
+          <div className="p-8">
+            <div className="flex items-center justify-between">
+              <h3 className="text-2xl font-semibold">
+                {t.work.borTitle}
+              </h3>
+
+              <ArrowUpRight className="h-5 w-5 text-neutral-400 transition duration-300 group-hover:translate-x-1 group-hover:-translate-y-1 group-hover:text-white" />
+            </div>
+
+             <p className="mt-4 text-neutral-400">
+           {t.work.borText}
+          </p>
+        </div>
+      </a>
 
               {/* PESMARICA */}
-              <div className="group overflow-hidden rounded-[32px] border border-white/10 bg-white/[0.03] transition duration-500 hover:-translate-y-2 hover:border-white/20 hover:shadow-[0_20px_80px_rgba(0,0,0,0.35)]">
-                <div className="relative h-[300px] overflow-hidden bg-neutral-950">
-                  <Image
-                    src="/images/pesmarica.png.png"
-                    alt="Pesmarica App"
-                    fill
-                    sizes="(min-width: 1024px) 33vw, 100vw"
-                    className="object-cover transition duration-700 group-hover:scale-[1.07]"
-                  />
+              <a
+                  href="https://pesmarica.netlify.app/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group block overflow-hidden rounded-[32px] border border-white/10 bg-white/[0.03] transition duration-500 hover:-translate-y-2 hover:border-white/20 hover:shadow-[0_20px_80px_rgba(0,0,0,0.35)]"
+                >
+                  <div className="relative h-[240px] md:h-[300px] overflow-hidden bg-neutral-950">
+                    <Image
+                      src="/images/pesmarica.png.png"
+                      alt="Pesmarica App"
+                      fill
+                      sizes="(min-width: 1024px) 33vw, 100vw"
+                      className="object-cover transition duration-700 group-hover:scale-[1.07]"
+                    />
 
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
 
-                  <div className="absolute bottom-8 left-8">
-                    <span className="rounded-full border border-white/10 bg-black/40 px-4 py-2 text-sm text-neutral-200 backdrop-blur-sm">
-                      {t.work.pesmaricaTag}
-                    </span>
+                    <div className="absolute bottom-8 left-8">
+                      <span className="rounded-full border border-white/10 bg-black/40 px-4 py-2 text-sm text-neutral-200 backdrop-blur-sm">
+                        {t.work.pesmaricaTag}
+                      </span>
+                    </div>
                   </div>
-                </div>
 
-                <div className="p-8">
-                  <h3 className="text-2xl font-semibold">
-                    {t.work.pesmaricaTitle}
-                  </h3>
-                  <p className="mt-4 text-neutral-400">
-                    {t.work.pesmaricaText}
-                  </p>
-                </div>
-              </div>
+                  <div className="p-8">
+                    <div className="flex items-center justify-between">
+                      <h3 className="text-2xl font-semibold">
+                        {t.work.pesmaricaTitle}
+                      </h3>
+
+                      <ArrowUpRight className="h-5 w-5 text-neutral-400 transition duration-300 group-hover:translate-x-1 group-hover:-translate-y-1 group-hover:text-white" />
+                    </div>
+
+                    <p className="mt-4 text-neutral-400">
+                      {t.work.pesmaricaText}
+                    </p>
+                  </div>
+                </a>
 
               {/* JOVAN PT */}
               <div className="group overflow-hidden rounded-[32px] border border-white/10 bg-white/[0.03] transition duration-500 hover:-translate-y-2 hover:border-white/20 hover:shadow-[0_20px_80px_rgba(0,0,0,0.35)]">
