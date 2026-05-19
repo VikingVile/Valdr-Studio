@@ -741,24 +741,46 @@ export default function Home() {
                 </a>
 
               {/* JOVAN PT */}
-              <div className="group overflow-hidden rounded-[32px] border border-white/10 bg-white/[0.03] transition duration-500 hover:-translate-y-2 hover:border-white/20 hover:shadow-[0_20px_80px_rgba(0,0,0,0.35)]">
-                <div className="relative h-[300px] overflow-hidden bg-gradient-to-br from-neutral-900 to-neutral-950">
-                  <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(255,255,255,0.08),transparent_40%)]" />
+                  <a
+                    href="https://www.instagram.com/jovanpt"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group block overflow-hidden rounded-[32px] border border-white/10 bg-white/[0.03] transition duration-500 hover:-translate-y-2 hover:shadow-[0_20px_80px_rgba(0,0,0,0.35)]"
+                  >
+                    <div className="relative h-[240px] overflow-hidden bg-neutral-950 md:h-[300px]">
+                    <Image
+                      src="/images/jovan-preview.jpg"
+                      alt="Jovan PT preview"
+                      fill
+                      sizes="(min-width: 1024px) 33vw, 100vw"
+                      className="scale-[1.13] object-cover object-[center_7%] transition duration-700 group-hover:scale-[1.18]"
+                    />
 
-                  <div className="flex h-full items-end p-8">
-                    <span className="rounded-full border border-yellow-500/20 bg-yellow-500/10 px-4 py-2 text-sm text-yellow-300">
-                      {t.work.jovanTag}
-                    </span>
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent" />
+
+                    <div className="absolute bottom-0 left-0 right-0 z-10 h-12 bg-gradient-to-t from-[#111111] via-[#111111]/90 to-transparent" />
+
+                    <div className="absolute bottom-8 left-8 z-20">
+                      <span className="rounded-full border border-yellow-500/20 bg-yellow-500/10 px-4 py-2 text-sm text-yellow-300 backdrop-blur-sm">
+                        {t.work.jovanTag}
+                      </span>
+                    </div>
                   </div>
-                </div>
 
-                <div className="p-8">
-                  <h3 className="text-2xl font-semibold">
-                    {t.work.jovanTitle}
-                  </h3>
-                  <p className="mt-4 text-neutral-400">{t.work.jovanText}</p>
-                </div>
-              </div>
+                    <div className="p-8">
+                      <div className="flex items-center justify-between gap-4">
+                        <h3 className="text-2xl font-semibold">
+                          {t.work.jovanTitle}
+                        </h3>
+
+                        <ArrowUpRight className="h-5 w-5 shrink-0 text-neutral-400 transition duration-300 group-hover:translate-x-1 group-hover:-translate-y-1 group-hover:text-white" />
+                      </div>
+
+                      <p className="mt-4 text-neutral-400">
+                        {t.work.jovanText}
+                      </p>
+                    </div>
+                  </a>
             </div>
           </div>
         </section>
