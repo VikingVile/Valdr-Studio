@@ -512,7 +512,7 @@ export default function Home() {
             </a>
           </nav>
 
-          <div className="hidden items-center gap-3 sm:flex">
+          <div className="flex items-center gap-2 sm:gap-3">
             <div className="flex rounded-full border border-white/10 bg-white/[0.03] p-1 text-xs font-medium text-neutral-400">
               <button
                 type="button"
@@ -537,7 +537,7 @@ export default function Home() {
 
             <a
               href="#contact"
-              className="rounded-full border border-white/10 bg-white/5 px-5 py-2 text-sm font-medium transition hover:bg-white hover:text-black"
+              className="hidden rounded-full border border-white/10 bg-white/5 px-5 py-2 text-sm font-medium transition hover:bg-white hover:text-black sm:inline-flex"
             >
               {t.nav.startProject}
             </a>
