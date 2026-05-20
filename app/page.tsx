@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import type { ReactNode } from "react";
-import FadeIn from "@/components/FadeIn";
+import Reveal from "@/components/Reveal";
 import TawkChat from "@/components/TawkChat";
 
 import {
@@ -479,7 +479,7 @@ export default function Home() {
   const t = copy[language];
 
   return (
-    <main className="min-h-screen bg-[#0A0A0A] text-white">
+    <main className="min-h-screen bg-[linear-gradient(to_bottom,#080808_0%,#0A0A0A_35%,#111111_100%)] text-white">
       {/* NAVBAR */}
       <header className="fixed left-0 top-0 z-50 w-full border-b border-white/10 bg-black/20 backdrop-blur-xl">
         <div className="mx-auto flex h-[78px] max-w-7xl items-center justify-between px-5 md:h-[78px]">
@@ -547,6 +547,16 @@ export default function Home() {
 
       {/* HERO */}
       <section className="relative flex min-h-[100svh] items-center justify-center overflow-hidden px-5 pt-24 md:px-6 md:pt-24">
+        {/* Premium top atmosphere */}
+        <div className="pointer-events-none absolute inset-0">
+          <div className="absolute left-1/2 top-[-380px] h-[700px] w-[1000px] -translate-x-1/2 rounded-full bg-white/[0.06] blur-[140px]" />
+
+          <div className="absolute left-[10%] top-[5%] h-[320px] w-[320px] rounded-full bg-white/[0.03] blur-[120px]" />
+
+          <div className="absolute right-[8%] top-[8%] h-[280px] w-[280px] rounded-full bg-white/[0.025] blur-[120px]" />
+
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.06),transparent_42%)]" />
+          </div>
         <div className="absolute left-1/2 top-[-200px] h-[500px] w-[500px] -translate-x-1/2 rounded-full bg-white/10 blur-[140px]" />
 
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_30%,rgba(255,255,255,0.08),transparent_28%),radial-gradient(circle_at_80%_70%,rgba(255,255,255,0.06),transparent_30%)]" />
@@ -587,7 +597,7 @@ export default function Home() {
       </section>
 
       {/* PROOF STRIP */}
-      <FadeIn>
+      <Reveal direction="up">
         <section className="relative overflow-hidden border-y border-white/10 bg-white/[0.02] px-6 py-14 backdrop-blur-sm">
           <div className="absolute left-1/2 top-0 h-52 w-[500px] -translate-x-1/2 rounded-full bg-white/[0.03] blur-[100px]" />
 
@@ -600,10 +610,10 @@ export default function Home() {
             ))}
           </div>
         </section>
-      </FadeIn>
+      </Reveal>
 
       {/* SERVICES */}
-      <FadeIn>
+      <Reveal direction="up">
         <section id="services" className="relative px-6 py-32">
           <div className="mx-auto max-w-7xl">
             <div className="mb-16 max-w-3xl">
@@ -639,10 +649,10 @@ export default function Home() {
             </div>
           </div>
         </section>
-      </FadeIn>
+      </Reveal>
 
       {/* SELECTED WORK */}
-      <FadeIn>
+      <Reveal direction="up">
         <section id="work" className="relative overflow-hidden px-6 py-32">
           <div className="mx-auto max-w-7xl">
             <div className="mb-16 flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
@@ -784,10 +794,10 @@ export default function Home() {
             </div>
           </div>
         </section>
-      </FadeIn>
+      </Reveal>
 
       {/* PROCESS */}
-      <FadeIn>
+      <Reveal direction="left">
         <section
           id="process"
           className="relative overflow-hidden border-t border-white/10 px-6 py-32"
@@ -826,10 +836,10 @@ export default function Home() {
             </div>
           </div>
         </section>
-      </FadeIn>
+      </Reveal>
 
       {/* ABOUT */}
-      <FadeIn>
+      <Reveal direction="up">
         <section className="relative border-t border-white/10 py-32">
           <div className="mx-auto max-w-7xl px-6 lg:px-8">
             <div className="grid gap-16 lg:grid-cols-2 lg:items-center">
@@ -885,10 +895,10 @@ export default function Home() {
             </div>
           </div>
         </section>
-      </FadeIn>
+      </Reveal>
 
       {/* TESTIMONIALS */}
-      <FadeIn>
+      <Reveal direction="up">
         <section className="relative overflow-hidden border-t border-white/10 px-6 py-32">
           <div className="mx-auto max-w-7xl">
             <div className="mb-16 max-w-3xl">
@@ -919,10 +929,10 @@ export default function Home() {
             </div>
           </div>
         </section>
-      </FadeIn>
+      </Reveal>
 
       {/* BOOKING */}
-      <FadeIn>
+      <Reveal direction="left">
         <section
           id="booking"
           className="relative overflow-hidden border-t border-white/10 px-6 py-32"
@@ -1002,10 +1012,10 @@ export default function Home() {
             </GlowCard>
           </div>
         </section>
-      </FadeIn>
+      </Reveal>
 
       {/* PAYMENT */}
-      <FadeIn>
+      <Reveal direction="right">
         <section
           id="payment"
           className="relative overflow-hidden border-t border-white/10 px-6 py-32"
@@ -1120,10 +1130,10 @@ export default function Home() {
             </GlowCard>
           </div>
         </section>
-      </FadeIn>
+      </Reveal>
 
       {/* CONTACT / CTA */}
-      <FadeIn>
+      <Reveal direction="up">
         <section
           id="contact"
           className="relative overflow-hidden border-t border-white/10 px-6 py-36"
@@ -1179,7 +1189,7 @@ export default function Home() {
             </div>
           </div>
         </section>
-      </FadeIn>
+      </Reveal>
 
       <TawkChat />
     </main>
