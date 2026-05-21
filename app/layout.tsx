@@ -1,20 +1,40 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
 
 export const metadata: Metadata = {
   title: "Valdr Studio | Premium Websites & Web Apps",
-  description: "Premium websites, web apps and digital experiences built to make brands impossible to ignore.",
+  description:
+    "Premium digital experiences built with purpose. Valdr Studio creates modern websites and web apps for brands that want to stand out online.",
+  metadataBase: new URL("https://www.valdrstudio.com"),
+  icons: {
+    icon: "/favicon.ico",
+    shortcut: "/favicon.ico",
+    apple: "/apple-touch-icon.png",
+  },
+  openGraph: {
+    title: "Valdr Studio | Premium Websites & Web Apps",
+    description:
+      "Premium websites and web apps for brands that want to stand out online.",
+    url: "https://www.valdrstudio.com",
+    siteName: "Valdr Studio",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Valdr Studio",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Valdr Studio | Premium Websites & Web Apps",
+    description:
+      "Premium websites and web apps for brands that want to stand out online.",
+    images: ["/og-image.png"],
+  },
 };
 
 export default function RootLayout({
@@ -23,11 +43,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
-    >
-      <body className="min-h-full flex flex-col">{children}</body>
+    <html lang="en">
+      <body>{children}</body>
     </html>
   );
 }

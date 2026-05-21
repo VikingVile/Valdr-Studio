@@ -460,6 +460,191 @@ function GlowCard({
   );
 }
 
+function BinaryCodeRain() {
+  const columnGroups = [
+    {
+      side: "left",
+      offset: "2vw",
+      opacity: 0.13,
+      streams: [
+        { animation: "valdrBinaryDownA", duration: "22s", delay: "-4s", sequence: "010110100101011001011010" },
+        { animation: "valdrBinaryUpB", duration: "31s", delay: "-16s", sequence: "110010101101001011001010" },
+        { animation: "valdrBinaryDownC", duration: "27s", delay: "-9s", sequence: "001011010010110100101101" },
+        { animation: "valdrBinaryUpD", duration: "36s", delay: "-21s", sequence: "101001011010010110100101" },
+      ],
+    },
+    {
+      side: "left",
+      offset: "4.9vw",
+      opacity: 0.11,
+      streams: [
+        { animation: "valdrBinaryUpA", duration: "34s", delay: "-18s", sequence: "101101001010110010110100" },
+        { animation: "valdrBinaryDownB", duration: "25s", delay: "-7s", sequence: "010010110100101101001011" },
+        { animation: "valdrBinaryUpC", duration: "39s", delay: "-25s", sequence: "110100101101001010110010" },
+        { animation: "valdrBinaryDownD", duration: "29s", delay: "-13s", sequence: "001101001011010010101101" },
+      ],
+    },
+    {
+      side: "left",
+      offset: "7.8vw",
+      opacity: 0.095,
+      streams: [
+        { animation: "valdrBinaryDownD", duration: "41s", delay: "-29s", sequence: "011010010110100101011001" },
+        { animation: "valdrBinaryUpA", duration: "28s", delay: "-11s", sequence: "100101101001011010010110" },
+        { animation: "valdrBinaryDownB", duration: "35s", delay: "-20s", sequence: "010110010101101001011010" },
+        { animation: "valdrBinaryUpC", duration: "24s", delay: "-6s", sequence: "111001010110100101100101" },
+      ],
+    },
+    {
+      side: "left",
+      offset: "15vw",
+      opacity: 0.075,
+      streams: [
+        { animation: "valdrBinaryUpD", duration: "30s", delay: "-12s", sequence: "010101101001011001011010" },
+        { animation: "valdrBinaryDownA", duration: "44s", delay: "-33s", sequence: "101101001011010010110010" },
+        { animation: "valdrBinaryUpB", duration: "26s", delay: "-8s", sequence: "001011010110010101101001" },
+        { animation: "valdrBinaryDownC", duration: "37s", delay: "-19s", sequence: "110010110100101101001010" },
+      ],
+    },
+    {
+      side: "right",
+      offset: "2vw",
+      opacity: 0.13,
+      streams: [
+        { animation: "valdrBinaryUpA", duration: "23s", delay: "-6s", sequence: "101001011010010110010101" },
+        { animation: "valdrBinaryDownB", duration: "32s", delay: "-18s", sequence: "010101101001011010010110" },
+        { animation: "valdrBinaryUpC", duration: "28s", delay: "-10s", sequence: "110100101011001011010010" },
+        { animation: "valdrBinaryDownD", duration: "37s", delay: "-24s", sequence: "001010110100101101001011" },
+      ],
+    },
+    {
+      side: "right",
+      offset: "4.9vw",
+      opacity: 0.11,
+      streams: [
+        { animation: "valdrBinaryDownA", duration: "35s", delay: "-21s", sequence: "011001011010010101101001" },
+        { animation: "valdrBinaryUpB", duration: "26s", delay: "-8s", sequence: "101101001011001010110100" },
+        { animation: "valdrBinaryDownC", duration: "40s", delay: "-30s", sequence: "010110100101101001011001" },
+        { animation: "valdrBinaryUpD", duration: "30s", delay: "-14s", sequence: "110010101101001010110100" },
+      ],
+    },
+    {
+      side: "right",
+      offset: "7.8vw",
+      opacity: 0.095,
+      streams: [
+        { animation: "valdrBinaryUpD", duration: "42s", delay: "-31s", sequence: "001101001011010010101101" },
+        { animation: "valdrBinaryDownA", duration: "29s", delay: "-12s", sequence: "010010110100101101001011" },
+        { animation: "valdrBinaryUpB", duration: "36s", delay: "-22s", sequence: "101001011010010110100101" },
+        { animation: "valdrBinaryDownC", duration: "25s", delay: "-7s", sequence: "110100101011001011010010" },
+      ],
+    },
+    {
+      side: "right",
+      offset: "10.7vw",
+      opacity: 0.075,
+      streams: [
+        { animation: "valdrBinaryDownD", duration: "31s", delay: "-16s", sequence: "010110010101101001011010" },
+        { animation: "valdrBinaryUpA", duration: "45s", delay: "-35s", sequence: "111001010110100101100101" },
+        { animation: "valdrBinaryDownB", duration: "27s", delay: "-9s", sequence: "011010010110100101011001" },
+        { animation: "valdrBinaryUpC", duration: "38s", delay: "-26s", sequence: "100101101001011010010110" },
+      ],
+    },
+  ] as const;
+
+  return (
+    <div
+      className="pointer-events-none fixed left-0 top-0 z-0 hidden h-dvh w-screen max-w-full overflow-hidden xl:block"
+      aria-hidden="true"
+    >
+      <style>{`
+        @keyframes valdrBinaryDownA {
+          0% { transform: translate3d(-1px, -50%, 0); }
+          50% { transform: translate3d(1px, 0%, 0); }
+          100% { transform: translate3d(-1px, 50%, 0); }
+        }
+
+        @keyframes valdrBinaryDownB {
+          0% { transform: translate3d(1px, -50%, 0); }
+          45% { transform: translate3d(-2px, -3%, 0); }
+          100% { transform: translate3d(1px, 50%, 0); }
+        }
+
+        @keyframes valdrBinaryDownC {
+          0% { transform: translate3d(0px, -50%, 0); }
+          55% { transform: translate3d(2px, 2%, 0); }
+          100% { transform: translate3d(-1px, 50%, 0); }
+        }
+
+        @keyframes valdrBinaryDownD {
+          0% { transform: translate3d(2px, -50%, 0); }
+          50% { transform: translate3d(-1px, 0%, 0); }
+          100% { transform: translate3d(2px, 50%, 0); }
+        }
+
+        @keyframes valdrBinaryUpA {
+          0% { transform: translate3d(1px, 50%, 0); }
+          50% { transform: translate3d(-1px, 0%, 0); }
+          100% { transform: translate3d(1px, -50%, 0); }
+        }
+
+        @keyframes valdrBinaryUpB {
+          0% { transform: translate3d(-1px, 50%, 0); }
+          45% { transform: translate3d(2px, 3%, 0); }
+          100% { transform: translate3d(-1px, -50%, 0); }
+        }
+
+        @keyframes valdrBinaryUpC {
+          0% { transform: translate3d(0px, 50%, 0); }
+          55% { transform: translate3d(-2px, -2%, 0); }
+          100% { transform: translate3d(1px, -50%, 0); }
+        }
+
+        @keyframes valdrBinaryUpD {
+          0% { transform: translate3d(-2px, 50%, 0); }
+          50% { transform: translate3d(1px, 0%, 0); }
+          100% { transform: translate3d(-2px, -50%, 0); }
+        }
+      `}</style>
+
+      <div
+        className="absolute inset-0 overflow-hidden"
+        style={{
+          WebkitMaskImage:
+            "linear-gradient(to right, black 0%, black 20%, rgba(0,0,0,0.62) 25%, rgba(0,0,0,0.24) 29%, transparent 34%, transparent 66%, rgba(0,0,0,0.24) 71%, rgba(0,0,0,0.62) 75%, black 80%, black 100%)",
+          maskImage:
+            "linear-gradient(to right, black 0%, black 20%, rgba(0,0,0,0.62) 25%, rgba(0,0,0,0.24) 29%, transparent 34%, transparent 66%, rgba(0,0,0,0.24) 71%, rgba(0,0,0,0.62) 75%, black 80%, black 100%)",
+        }}
+      >
+        {columnGroups.map((group, groupIndex) => (
+          <div
+            key={`${group.side}-${group.offset}-${groupIndex}`}
+            className="absolute top-[-50vh] h-[200vh] w-[46px] select-none overflow-hidden"
+            style={
+              group.side === "left"
+                ? { left: group.offset, opacity: group.opacity }
+                : { right: group.offset, opacity: group.opacity }
+            }
+          >
+            {group.streams.map((stream, streamIndex) => (
+              <div
+                key={`${stream.animation}-${stream.duration}-${streamIndex}`}
+                className="absolute top-0 h-full w-4 whitespace-pre-wrap break-all font-mono text-[11px] font-medium leading-[1.9] tracking-[0.45em] text-white/90 blur-[0.12px] [writing-mode:vertical-rl]"
+                style={{
+                  left: `${streamIndex * 13}px`,
+                  animation: `${stream.animation} ${stream.duration} linear infinite`,
+                  animationDelay: stream.delay,
+                }}
+              >
+                {(stream.sequence.repeat(22) + stream.sequence.repeat(22))}
+              </div>
+            ))}
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
 export default function Home() {
   const [language, setLanguage] = useState<Language>("en");
 
@@ -479,7 +664,9 @@ export default function Home() {
   const t = copy[language];
 
   return (
-    <main className="min-h-screen bg-[linear-gradient(to_bottom,#080808_0%,#0A0A0A_35%,#111111_100%)] text-white">
+    <main className="relative isolate min-h-screen overflow-x-clip bg-[linear-gradient(to_bottom,#080808_0%,#0A0A0A_35%,#111111_100%)] text-white">
+      <BinaryCodeRain />
+
       {/* NAVBAR */}
       <header className="fixed left-0 top-0 z-50 w-full border-b border-white/10 bg-black/20 backdrop-blur-xl">
         <div className="mx-auto flex h-[78px] max-w-7xl items-center justify-between px-5 md:h-[78px]">
@@ -546,7 +733,7 @@ export default function Home() {
       </header>
 
       {/* HERO */}
-      <section className="relative flex min-h-[100svh] items-center justify-center overflow-hidden px-5 pt-24 md:px-6 md:pt-24">
+      <section className="relative z-10 flex min-h-[100svh] items-center justify-center overflow-hidden px-5 pt-24 md:px-6 md:pt-24">
         {/* Premium top atmosphere */}
         <div className="pointer-events-none absolute inset-0">
           <div className="absolute left-1/2 top-[-380px] h-[700px] w-[1000px] -translate-x-1/2 rounded-full bg-white/[0.06] blur-[140px]" />
@@ -556,7 +743,8 @@ export default function Home() {
           <div className="absolute right-[8%] top-[8%] h-[280px] w-[280px] rounded-full bg-white/[0.025] blur-[120px]" />
 
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.06),transparent_42%)]" />
-          </div>
+        </div>
+
         <div className="absolute left-1/2 top-[-200px] h-[500px] w-[500px] -translate-x-1/2 rounded-full bg-white/10 blur-[140px]" />
 
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_30%,rgba(255,255,255,0.08),transparent_28%),radial-gradient(circle_at_80%_70%,rgba(255,255,255,0.06),transparent_30%)]" />
@@ -672,125 +860,121 @@ export default function Home() {
             <div className="grid gap-8 lg:grid-cols-3">
               {/* BOR BUS */}
               <a
-                 href="https://borskiprevoz.netlify.app/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group block overflow-hidden rounded-[32px] border border-white/10 bg-white/[0.03] transition duration-500 hover:-translate-y-2 hover:border-white/20 hover:shadow-[0_20px_80px_rgba(0,0,0,0.35)]"
-                  >
-                <div className="relative h-[240px] md:h-[300px] overflow-hidden bg-neutral-950">
-                <Image
-                src="/images/favicon.png.png"
-                alt="Bor Bus App"
-                fill
-                sizes="(min-width: 1024px) 33vw, 100vw"
-                className="object-cover transition duration-700 group-hover:scale-[1.07]"
-                />
+                href="https://borskiprevoz.netlify.app/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group block overflow-hidden rounded-[32px] border border-white/10 bg-white/[0.03] transition duration-500 hover:-translate-y-2 hover:border-white/20 hover:shadow-[0_20px_80px_rgba(0,0,0,0.35)]"
+              >
+                <div className="relative h-[240px] overflow-hidden bg-neutral-950 md:h-[300px]">
+                  <Image
+                    src="/images/favicon.png.png"
+                    alt="Bor Bus App"
+                    fill
+                    sizes="(min-width: 1024px) 33vw, 100vw"
+                    className="object-cover transition duration-700 group-hover:scale-[1.07]"
+                  />
 
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
 
-              <div className="absolute bottom-8 left-8">
-             <span className="rounded-full border border-white/10 bg-black/40 px-4 py-2 text-sm text-neutral-200 backdrop-blur-sm">
-           {t.work.borTag}
-        </span>
-      </div>
-    </div>
+                  <div className="absolute bottom-8 left-8">
+                    <span className="rounded-full border border-white/10 bg-black/40 px-4 py-2 text-sm text-neutral-200 backdrop-blur-sm">
+                      {t.work.borTag}
+                    </span>
+                  </div>
+                </div>
 
-          <div className="p-8">
-            <div className="flex items-center justify-between">
-              <h3 className="text-2xl font-semibold">
-                {t.work.borTitle}
-              </h3>
+                <div className="p-8">
+                  <div className="flex items-center justify-between">
+                    <h3 className="text-2xl font-semibold">
+                      {t.work.borTitle}
+                    </h3>
 
-              <ArrowUpRight className="h-5 w-5 text-neutral-400 transition duration-300 group-hover:translate-x-1 group-hover:-translate-y-1 group-hover:text-white" />
-            </div>
+                    <ArrowUpRight className="h-5 w-5 text-neutral-400 transition duration-300 group-hover:translate-x-1 group-hover:-translate-y-1 group-hover:text-white" />
+                  </div>
 
-             <p className="mt-4 text-neutral-400">
-           {t.work.borText}
-          </p>
-        </div>
-      </a>
+                  <p className="mt-4 text-neutral-400">{t.work.borText}</p>
+                </div>
+              </a>
 
               {/* PESMARICA */}
               <a
-                  href="https://pesmarica.netlify.app/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group block overflow-hidden rounded-[32px] border border-white/10 bg-white/[0.03] transition duration-500 hover:-translate-y-2 hover:border-white/20 hover:shadow-[0_20px_80px_rgba(0,0,0,0.35)]"
-                >
-                  <div className="relative h-[240px] md:h-[300px] overflow-hidden bg-neutral-950">
-                    <Image
-                      src="/images/pesmarica.png.png"
-                      alt="Pesmarica App"
-                      fill
-                      sizes="(min-width: 1024px) 33vw, 100vw"
-                      className="object-cover transition duration-700 group-hover:scale-[1.07]"
-                    />
+                href="https://pesmarica.netlify.app/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group block overflow-hidden rounded-[32px] border border-white/10 bg-white/[0.03] transition duration-500 hover:-translate-y-2 hover:border-white/20 hover:shadow-[0_20px_80px_rgba(0,0,0,0.35)]"
+              >
+                <div className="relative h-[240px] overflow-hidden bg-neutral-950 md:h-[300px]">
+                  <Image
+                    src="/images/pesmarica.png.png"
+                    alt="Pesmarica App"
+                    fill
+                    sizes="(min-width: 1024px) 33vw, 100vw"
+                    className="object-cover transition duration-700 group-hover:scale-[1.07]"
+                  />
 
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
 
-                    <div className="absolute bottom-8 left-8">
-                      <span className="rounded-full border border-white/10 bg-black/40 px-4 py-2 text-sm text-neutral-200 backdrop-blur-sm">
-                        {t.work.pesmaricaTag}
-                      </span>
-                    </div>
+                  <div className="absolute bottom-8 left-8">
+                    <span className="rounded-full border border-white/10 bg-black/40 px-4 py-2 text-sm text-neutral-200 backdrop-blur-sm">
+                      {t.work.pesmaricaTag}
+                    </span>
+                  </div>
+                </div>
+
+                <div className="p-8">
+                  <div className="flex items-center justify-between">
+                    <h3 className="text-2xl font-semibold">
+                      {t.work.pesmaricaTitle}
+                    </h3>
+
+                    <ArrowUpRight className="h-5 w-5 text-neutral-400 transition duration-300 group-hover:translate-x-1 group-hover:-translate-y-1 group-hover:text-white" />
                   </div>
 
-                  <div className="p-8">
-                    <div className="flex items-center justify-between">
-                      <h3 className="text-2xl font-semibold">
-                        {t.work.pesmaricaTitle}
-                      </h3>
-
-                      <ArrowUpRight className="h-5 w-5 text-neutral-400 transition duration-300 group-hover:translate-x-1 group-hover:-translate-y-1 group-hover:text-white" />
-                    </div>
-
-                    <p className="mt-4 text-neutral-400">
-                      {t.work.pesmaricaText}
-                    </p>
-                  </div>
-                </a>
+                  <p className="mt-4 text-neutral-400">
+                    {t.work.pesmaricaText}
+                  </p>
+                </div>
+              </a>
 
               {/* JOVAN PT */}
-                  <a
-                    href="https://www.instagram.com/jovanpt"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="group block overflow-hidden rounded-[32px] border border-white/10 bg-white/[0.03] transition duration-500 hover:-translate-y-2 hover:shadow-[0_20px_80px_rgba(0,0,0,0.35)]"
-                  >
-                    <div className="relative h-[240px] overflow-hidden bg-neutral-950 md:h-[300px]">
-                    <Image
-                      src="/images/jovan-preview.jpg"
-                      alt="Jovan PT preview"
-                      fill
-                      sizes="(min-width: 1024px) 33vw, 100vw"
-                      className="scale-[1.13] object-cover object-[center_7%] transition duration-700 group-hover:scale-[1.18]"
-                    />
+              <a
+                href="https://www.instagram.com/jovanpt"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group block overflow-hidden rounded-[32px] border border-white/10 bg-white/[0.03] transition duration-500 hover:-translate-y-2 hover:shadow-[0_20px_80px_rgba(0,0,0,0.35)]"
+              >
+                <div className="relative h-[240px] overflow-hidden bg-neutral-950 md:h-[300px]">
+                  <Image
+                    src="/images/jovan-preview.jpg"
+                    alt="Jovan PT preview"
+                    fill
+                    sizes="(min-width: 1024px) 33vw, 100vw"
+                    className="scale-[1.13] object-cover object-[center_7%] transition duration-700 group-hover:scale-[1.18]"
+                  />
 
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent" />
 
-                    <div className="absolute bottom-0 left-0 right-0 z-10 h-12 bg-gradient-to-t from-[#111111] via-[#111111]/90 to-transparent" />
+                  <div className="absolute bottom-0 left-0 right-0 z-10 h-12 bg-gradient-to-t from-[#111111] via-[#111111]/90 to-transparent" />
 
-                    <div className="absolute bottom-8 left-8 z-20">
-                      <span className="rounded-full border border-yellow-500/20 bg-yellow-500/10 px-4 py-2 text-sm text-yellow-300 backdrop-blur-sm">
-                        {t.work.jovanTag}
-                      </span>
-                    </div>
+                  <div className="absolute bottom-8 left-8 z-20">
+                    <span className="rounded-full border border-yellow-500/20 bg-yellow-500/10 px-4 py-2 text-sm text-yellow-300 backdrop-blur-sm">
+                      {t.work.jovanTag}
+                    </span>
+                  </div>
+                </div>
+
+                <div className="p-8">
+                  <div className="flex items-center justify-between gap-4">
+                    <h3 className="text-2xl font-semibold">
+                      {t.work.jovanTitle}
+                    </h3>
+
+                    <ArrowUpRight className="h-5 w-5 shrink-0 text-neutral-400 transition duration-300 group-hover:translate-x-1 group-hover:-translate-y-1 group-hover:text-white" />
                   </div>
 
-                    <div className="p-8">
-                      <div className="flex items-center justify-between gap-4">
-                        <h3 className="text-2xl font-semibold">
-                          {t.work.jovanTitle}
-                        </h3>
-
-                        <ArrowUpRight className="h-5 w-5 shrink-0 text-neutral-400 transition duration-300 group-hover:translate-x-1 group-hover:-translate-y-1 group-hover:text-white" />
-                      </div>
-
-                      <p className="mt-4 text-neutral-400">
-                        {t.work.jovanText}
-                      </p>
-                    </div>
-                  </a>
+                  <p className="mt-4 text-neutral-400">{t.work.jovanText}</p>
+                </div>
+              </a>
             </div>
           </div>
         </section>
