@@ -24,6 +24,8 @@ import {
 
 type Language = "en" | "sr";
 
+const CALENDLY_URL = "https://calendly.com/radivojevicdavor79/30min";
+
 const copy = {
   en: {
     nav: {
@@ -723,7 +725,9 @@ export default function Home() {
             </div>
 
             <a
-              href="#contact"
+              href={CALENDLY_URL}
+              target="_blank"
+              rel="noopener noreferrer"
               className="hidden rounded-full border border-white/10 bg-white/5 px-5 py-2 text-sm font-medium transition hover:bg-white hover:text-black sm:inline-flex"
             >
               {t.nav.startProject}
@@ -768,7 +772,9 @@ export default function Home() {
 
           <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <a
-              href="#contact"
+              href={CALENDLY_URL}
+              target="_blank"
+              rel="noopener noreferrer"
               className="min-w-[220px] rounded-full bg-white px-8 py-4 font-medium text-black transition hover:scale-105"
             >
               {t.hero.primary}
@@ -1181,7 +1187,7 @@ export default function Home() {
               </div>
 
               <a
-                href="https://calendly.com/radivojevicdavor79/30min"
+                href={CALENDLY_URL}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="mt-10 inline-flex w-full items-center justify-center gap-3 rounded-full bg-white px-8 py-4 font-medium text-black transition hover:scale-[1.02]"
@@ -1298,7 +1304,7 @@ export default function Home() {
 
               <div className="mt-10">
                 <a
-                  href="https://calendly.com/radivojevicdavor79/30min"
+                  href={CALENDLY_URL}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex w-full items-center justify-center gap-3 rounded-full bg-white px-8 py-4 font-medium text-black transition hover:scale-[1.02]"
