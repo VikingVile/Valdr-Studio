@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link"; //OVDE JE DODANO//
 import { useEffect, useState } from "react";
 import type { ReactNode } from "react";
 import Reveal from "@/components/Reveal";
@@ -99,6 +100,16 @@ const copy = {
       jovanTitle: "Jovan PT",
       jovanText:
         "Premium personal trainer website focused on high-end branding and conversion.",
+      //OVDE JE DODANO//
+      vcompanyTag: "In Progress",
+      vcompanyTitle: "V-COMPANY",
+      vcompanyText:
+        "Premium industrial CNC website focused on trust, capability clarity and serious B2B positioning.",
+      avlijeTag: "In Progress",
+      avlijeTitle: "Restoran Avlija",
+      avlijeText:
+        "Warm premium restaurant website focused on atmosphere, Serbian cuisine, reservations and brand presence.",
+      //OVDE JE DODANO//
     },
     process: {
       eyebrow: "Process",
@@ -304,6 +315,16 @@ const copy = {
       jovanTitle: "Jovan PT",
       jovanText:
         "Premium sajt za personalnog trenera fokusiran na high-end brending i konverziju.",
+      //OVDE JE DODANO//
+      vcompanyTag: "U izradi",
+      vcompanyTitle: "V-COMPANY",
+      vcompanyText:
+        "Premium industrijski CNC sajt fokusiran na poverenje, kapacitete i ozbiljan B2B nastup.",
+      avlijeTag: "U izradi",
+      avlijeTitle: "Restoran Avlija",
+      avlijeText:
+        "Topao premium restoran sajt fokusiran na atmosferu, domaću kuhinju, rezervacije i brend prisustvo.",
+      //OVDE JE DODANO//
     },
     process: {
       eyebrow: "Proces",
@@ -942,11 +963,9 @@ export default function Home() {
                 </div>
               </a>
 
-              {/* JOVAN PT */}
-              <a
-                href="https://www.instagram.com/jovanpt"
-                target="_blank"
-                rel="noopener noreferrer"
+              {/* JOVAN PT */} {/*OVDE JE DODANO: kartica sada vodi na interni preview page umesto na Instagram */}
+              <Link
+                href="/work/jovan-pt"
                 className="group block overflow-hidden rounded-[32px] border border-white/10 bg-white/[0.03] transition duration-500 hover:-translate-y-2 hover:shadow-[0_20px_80px_rgba(0,0,0,0.35)]"
               >
                 <div className="relative h-[240px] overflow-hidden bg-neutral-950 md:h-[300px]">
@@ -980,7 +999,81 @@ export default function Home() {
 
                   <p className="mt-4 text-neutral-400">{t.work.jovanText}</p>
                 </div>
-              </a>
+              </Link>
+
+              {/* V-COMPANY */} {/*OVDE JE DODANO*/}
+              <Link
+                href="/work/v-company"
+                className="group block overflow-hidden rounded-[32px] border border-white/10 bg-white/[0.03] transition duration-500 hover:-translate-y-2 hover:border-sky-300/20 hover:shadow-[0_20px_80px_rgba(0,0,0,0.35)]"
+              >
+                <div className="relative h-[240px] overflow-hidden bg-neutral-950 md:h-[300px]">
+                  <Image
+                    src="/images/v-company-preview.png"
+                    alt="V-COMPANY preview"
+                    fill
+                    sizes="(min-width: 1024px) 33vw, 100vw"
+                    className="object-cover object-left transition duration-700 group-hover:scale-[1.07]"
+                  />
+
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/25 to-transparent" />
+
+                  <div className="absolute bottom-8 left-8 z-20">
+                    <span className="rounded-full border border-sky-400/20 bg-sky-400/10 px-4 py-2 text-sm text-sky-200 backdrop-blur-sm">
+                      {t.work.vcompanyTag}
+                    </span>
+                  </div>
+                </div>
+
+                <div className="p-8">
+                  <div className="flex items-center justify-between gap-4">
+                    <h3 className="text-2xl font-semibold">
+                      {t.work.vcompanyTitle}
+                    </h3>
+
+                    <ArrowUpRight className="h-5 w-5 shrink-0 text-neutral-400 transition duration-300 group-hover:translate-x-1 group-hover:-translate-y-1 group-hover:text-white" />
+                  </div>
+
+                  <p className="mt-4 text-neutral-400">
+                    {t.work.vcompanyText}
+                  </p>
+                </div>
+              </Link>
+
+              {/* RESTORAN AVLIJA */} {/*OVDE JE DODANO*/}
+              <Link
+                href="/work/restoran-avlija"
+                className="group block overflow-hidden rounded-[32px] border border-white/10 bg-white/[0.03] transition duration-500 hover:-translate-y-2 hover:border-amber-300/20 hover:shadow-[0_20px_80px_rgba(0,0,0,0.35)]"
+              >
+                <div className="relative h-[240px] overflow-hidden bg-neutral-950 md:h-[300px]">
+                  <Image
+                    src="/images/avlije-preview.png"
+                    alt="Restoran Avlija preview"
+                    fill
+                    sizes="(min-width: 1024px) 33vw, 100vw"
+                    className="object-cover object-center transition duration-700 group-hover:scale-[1.07]"
+                  />
+
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/25 to-transparent" />
+
+                  <div className="absolute bottom-8 left-8 z-20">
+                    <span className="rounded-full border border-amber-400/20 bg-amber-400/10 px-4 py-2 text-sm text-amber-200 backdrop-blur-sm">
+                      {t.work.avlijeTag}
+                    </span>
+                  </div>
+                </div>
+
+                <div className="p-8">
+                  <div className="flex items-center justify-between gap-4">
+                    <h3 className="text-2xl font-semibold">
+                      {t.work.avlijeTitle}
+                    </h3>
+
+                    <ArrowUpRight className="h-5 w-5 shrink-0 text-neutral-400 transition duration-300 group-hover:translate-x-1 group-hover:-translate-y-1 group-hover:text-white" />
+                  </div>
+
+                  <p className="mt-4 text-neutral-400">{t.work.avlijeText}</p>
+                </div>
+              </Link>
             </div>
           </div>
         </section>
