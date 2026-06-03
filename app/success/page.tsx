@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function SuccessPage() {
   return (
     <main className="flex min-h-screen items-center justify-center bg-[#0A0A0A] px-6 text-white">
@@ -15,12 +17,12 @@ export default function SuccessPage() {
           steps for your VALDR STUDIO project.
         </p>
 
-        <a
+        <Link
           href="/"
           className="mt-10 inline-flex rounded-full bg-white px-8 py-4 font-medium text-black transition hover:scale-105"
         >
           Back to Home
-        </a>
+        </Link>
       </div>
     </main>
   );

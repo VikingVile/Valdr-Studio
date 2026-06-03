@@ -675,7 +675,7 @@ export default function Home() {
     const savedLanguage = window.localStorage.getItem("valdr-language");
 
     if (savedLanguage === "en" || savedLanguage === "sr") {
-      setLanguage(savedLanguage);
+      window.setTimeout(() => setLanguage(savedLanguage), 0);
     }
   }, []);
 
@@ -966,7 +966,8 @@ export default function Home() {
               {/* JOVAN PT */} {/*OVDE JE DODANO: kartica sada vodi na interni preview page umesto na Instagram */}
               <Link
                 href="/work/jovan-pt"
-                className="group block overflow-hidden rounded-[32px] border border-white/10 bg-white/[0.03] transition duration-500 hover:-translate-y-2 hover:shadow-[0_20px_80px_rgba(0,0,0,0.35)]"
+                aria-label="Open Jovan PT case study"
+                className="group block cursor-pointer overflow-hidden rounded-[32px] border border-white/10 bg-white/[0.03] transition duration-500 hover:-translate-y-2 hover:border-yellow-300/25 hover:shadow-[0_20px_80px_rgba(0,0,0,0.35),0_0_45px_rgba(250,204,21,0.08)] focus:outline-none focus-visible:-translate-y-2 focus-visible:border-yellow-300/35 focus-visible:shadow-[0_0_0_3px_rgba(250,204,21,0.18),0_20px_80px_rgba(0,0,0,0.35)]"
               >
                 <div className="relative h-[240px] overflow-hidden bg-neutral-950 md:h-[300px]">
                   <Image
