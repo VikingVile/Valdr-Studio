@@ -1,5 +1,3 @@
-//OVDE JE DODANO//
-
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft, Clock3 } from "lucide-react";

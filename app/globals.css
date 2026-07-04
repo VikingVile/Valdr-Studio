@@ -1,8 +1,48 @@
 @import "tailwindcss";
 
-:root {
-  --background: #0A0A0A;
-  --foreground: #ffffff;
+@theme {
+  --font-sans: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+
+  /* Background scale (hero/page gradient stops) */
+  --color-bg: #0A0A0A;
+  --color-bg-top: #080808;
+  --color-bg-elevated: #111111;
+
+  /* Text scale */
+  --color-text-primary: var(--color-white);
+  --color-text-secondary: var(--color-neutral-400);
+  --color-text-tertiary: var(--color-neutral-500);
+
+  /* Borders */
+  --color-border: rgb(255 255 255 / 10%);
+  --color-border-hover: rgb(255 255 255 / 20%);
+
+  /* Card/chip surface fill */
+  --color-surface: rgb(255 255 255 / 3%);
+
+  /* CTA buttons */
+  --color-cta-primary-bg: var(--color-white);
+  --color-cta-primary-text: var(--color-black);
+  --color-cta-secondary-bg: rgb(255 255 255 / 5%);
+  --color-cta-secondary-bg-hover: rgb(255 255 255 / 10%);
+
+  /* Per-project work accents */
+  --color-accent-jovan: var(--color-yellow-300);
+  --color-accent-vcompany: var(--color-sky-200);
+  --color-accent-avlija: var(--color-amber-200);
+
+  /* Radius: big feature/content cards vs. mid-size chips/controls. Buttons stay rounded-full. */
+  --radius-card: 28px;
+  --radius-control: 16px;
+
+  /* Card hover elevation (true box-shadow) */
+  --shadow-card-hover: 0 20px 80px rgb(0 0 0 / 35%);
+
+  /* Ambient background glow blobs (blur radius tiers; opacity stays per-instance) */
+  --blur-glow-sm: 100px;
+  --blur-glow-md: 130px;
+  --blur-glow-lg: 150px;
 }
 
 html {
@@ -16,9 +56,9 @@ body {
   width: 100%;
   max-width: 100%;
   overflow-x: clip;
-  background: #0A0A0A;
-  color: white;
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-bg);
+  color: var(--color-text-primary);
+  font-family: var(--font-sans);
 }
 
 * {
